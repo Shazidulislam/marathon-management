@@ -62,12 +62,12 @@ const goToSlides =(index)=>{
                         <p className='  text-5xl font-bold mb-4 drop-shadow-lg w-7/12'>{slide.title}</p>
                         <p className='text-lg mb-6'>{slide.description}</p>
                       
-                        <div className='grid grid-cols-12 gap-4 mt-3 items-center'>
-                            <p className='px-3 col-span-4 lg:col-span-3 border-2 flex justify-start items-center gap-2 border-white py-2 bg-[#ffffff40] font-semibold text-md rounded-md text-white'>Training and Preparation <FaArrowRightLong /></p>
-                            <p className='px-3 border-2 col-span-5 lg:col-span-3 flex justify-start items-center gap-2 border-white py-2 bg-[#ffffff40] font-semibold text-md rounded-md text-white'>Marathon Events and Culture<FaArrowRightLong /></p>
+                        <div className='grid grid-cols-12 gap-2 mt-3 items-center'>
+                            <p className='px-3 col-span-6 md:col-span-4 border-2 flex justify-start items-center gap-2 border-white py-2 bg-[#ffffff40] font-semibold text-md rounded-md text-white'>Training and Preparation <FaArrowRightLong /></p>
+                            <p className='px-3 border-2 col-span-6  md:col-span-4 flex justify-start items-center gap-2 border-white py-2 bg-[#ffffff40] font-semibold text-md rounded-md text-white'>Marathon Events and Culture<FaArrowRightLong /></p>
 
                            
-                            <p className='px-3 border-2 col-span-4 lg:col-span-3 flex justify-start items-center gap-2 border-white py-2 bg-[#ffffff40] font-semibold text-md rounded-md text-white'>Physical and Mental Benefits<FaArrowRightLong /></p>
+                            <p className='px-3 border-2 col-span-12 md:col-span-4  flex justify-start items-center gap-2 border-white py-2 bg-[#ffffff40] font-semibold text-md rounded-md text-white'>Physical and Mental Benefits<FaArrowRightLong /></p>
                         </div>
                       </div>
                     </div>
