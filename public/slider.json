@@ -1,0 +1,25 @@
+
+
+[
+  {
+    "id": 1,
+    "title": "Run Your Best Marathon Yet!",
+    "description": "Join our marathon management platform to plan, train, and succeed!",
+    "buttonText": "Sign Up Now",
+    "bgImage": "https://i.ibb.co/nMWGqPPH/banner-1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Train Smarter, Run Stronger",
+    "description": "Get personalized training plans with our premium marathon app!",
+    "buttonText": "Start Training",
+    "bgImage": "https://i.ibb.co/Rp925zsS/banner-2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Track Every Step to the Finish Line",
+    "description": "Monitor your progress with our advanced marathon tracking tools!",
+    "buttonText": "Explore Features",
+    "bgImage": "https://i.ibb.co/bRMxMxyw/banner-3.jpg" 
+  }
+]

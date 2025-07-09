@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+
+
+.text_rancho {
+  font-family: "Rancho", cursive;
+}
