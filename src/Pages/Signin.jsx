@@ -1,6 +1,6 @@
 
 import React, { use } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import AuthContexts from '../Contexts/AuthContexts';
@@ -10,6 +10,7 @@ const Signin = () => {
 
     const {signInUser , error , setError, auth } = use(AuthContexts)
     const navigate = useNavigate()
+    const location = useLocation()
     const createUserwithGoogle=()=>{
             const provider = new GoogleAuthProvider()
             signInWithPopup(auth , provider)
@@ -50,7 +51,7 @@ const Signin = () => {
             timer: 1500
             });
             e.target.reset()
-            navigate("/")
+            navigate(`${location.state ? location.state :"/"}`)
             }
 
         })

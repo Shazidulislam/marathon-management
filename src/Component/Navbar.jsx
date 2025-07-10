@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import marathonlogo2 from "../assets/marathon-img/marathon-logo.jpg"
 import AuthContexts from '../Contexts/AuthContexts';
 
@@ -14,7 +14,7 @@ const Navbar = () => {
     }
 
     console.log(user)
-    const links = <div className='flex justify-around items-center gap-3'>
+    const links = <div className=' md:flex justify-center items-center gap-2'>
         <li>
             <NavLink
                 to="/"
@@ -27,7 +27,7 @@ const Navbar = () => {
         </li>
         <li>
             <NavLink
-                to="/rr"
+                to="/marathon"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "underline" : ""
                 }
@@ -36,26 +36,26 @@ const Navbar = () => {
             </NavLink>
         </li>
        {
-        user ? <> 
-            <li>
-            <NavLink
-                to="/rr"
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "underline" : ""
-                }
-                >
-                Dashboard
-            </NavLink>
-        </li> 
-        <li>
-            <figure>
-                <img className='bg-cover bg-center object-cover w-16 h-16 border-2  border-gray-400 rounded-full' src={user?.photoURL} alt="" />
-            </figure>
-        </li>
-           <li>
-             <button onClick={handleSignOut} className='px-6 py-2 border-2 border-[#403f3f]'>Logout</button>
-           </li>
-               </>   : <>
+        user ? <>                
+                                <li>
+                                        <NavLink
+                                            to="/board"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "underline" : ""
+                                            }
+                                            >
+                                            Dashboard
+                                        </NavLink>
+                                </li>
+                              <li >
+                                <figure className='hidden md:block'>
+                                    <img className='bg-cover bg-center object-cover w-12 h-12 border-2  border-gray-400 rounded-full' src={user?.photoURL} alt="" />
+                                </figure>
+                            </li>
+                            <li>
+                                <button onClick={handleSignOut} className='px-6 '>Logout</button>
+                            </li>
+                </>   : <>
 
           <li>
             <NavLink
@@ -82,7 +82,7 @@ const Navbar = () => {
      </div>
     return (
         <div>
-            <div className="flex w-full justify-between items-center bg-base-300 py-2 px-2 md:px-6 shadow-sm">
+            <div className="flex w-full justify-between items-center bg-base-300 py-1 px-2 md:px-6 shadow-sm">
                 <div className="flex justify-between items-center">
                     <div className="dropdown">
                        <div className='grid grid-cols-12 items-center'>
@@ -100,8 +100,8 @@ const Navbar = () => {
                         </ul>
                     {/* avater */}
                       <div className='hidden md:flex justify-center items-center gap-2'>
-                        <img className='w-12 lg:w-16 rounded-full' src={marathonlogo2} alt="" />
-                        <h1 className='text-3xl text_rancho font-bold text-[#403f3f]'>Marathon Hub</h1>
+                        <img className='w-12  rounded-full' src={marathonlogo2} alt="" />
+                        <h1 className='text-2xl text_rancho font-bold text-[#403f3f]'>Marathon Hub</h1>
                       </div>
                       
                     </div>

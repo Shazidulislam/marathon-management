@@ -47,16 +47,16 @@ const Register = () => {
         }
 
         if(!/(?=.*[A-Z])/.test(password)){
-            return setError("Must have an Uppercase letter in the password")
+            return toast.error("Must have an Uppercase letter in the password")
         }
         if(!/(?=.*[a-z])/.test(password)){
-            return setError("Must have a Lowercase letter in the password ")
+            return toast.error("Must have a Lowercase letter in the password ")
         }
         if(!/(?=.*\d)/.test(password)){
-            return setError("Must have one number in the password")
+            return toast.error("Must have one number in the password")
         }
         if(!/.{6}/.test(password)){
-            return setError("Password length must be at least 6 character")
+            return toast.error("Password length must be at least 6 character")
         }
        
         createUser(newRegisterData.email ,password )
