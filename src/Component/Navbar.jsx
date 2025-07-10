@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink } from 'react-router';
 import marathonlogo2 from "../assets/marathon-img/marathon-logo.jpg"
+import AuthContexts from '../Contexts/AuthContexts';
+
 
 const Navbar = () => {
-    const links = <>
+    
+    const {user , signOutUser} = use(AuthContexts)
+
+    const handleSignOut =()=>{
+        signOutUser()
+        
+    }
+
+    console.log(user)
+    const links = <div className='flex justify-around items-center gap-3'>
         <li>
             <NavLink
                 to="/"
@@ -24,7 +35,29 @@ const Navbar = () => {
                 Marathons
             </NavLink>
         </li>
+       {
+        user ? <> 
+            <li>
+            <NavLink
+                to="/rr"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "underline" : ""
+                }
+                >
+                Dashboard
+            </NavLink>
+        </li> 
         <li>
+            <figure>
+                <img className='bg-cover bg-center object-cover w-16 h-16 border-2  border-gray-400 rounded-full' src={user?.photoURL} alt="" />
+            </figure>
+        </li>
+           <li>
+             <button onClick={handleSignOut} className='px-6 py-2 border-2 border-[#403f3f]'>Logout</button>
+           </li>
+               </>   : <>
+
+          <li>
             <NavLink
                 to="/signin"
                 className={({ isActive, isPending }) =>
@@ -44,10 +77,12 @@ const Navbar = () => {
                 Register
             </NavLink>
         </li>
-     </>
+        </>
+       }
+     </div>
     return (
         <div>
-            <div className="flex w-full justify-between items-center bg-base-300 py-3 px-2 md:px-6 shadow-sm">
+            <div className="flex w-full justify-between items-center bg-base-300 py-2 px-2 md:px-6 shadow-sm">
                 <div className="flex justify-between items-center">
                     <div className="dropdown">
                        <div className='grid grid-cols-12 items-center'>
