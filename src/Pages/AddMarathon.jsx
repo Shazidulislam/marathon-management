@@ -2,13 +2,16 @@ import React, { use, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import AuthContexts from '../Contexts/AuthContexts';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 
 const AddMarathon = () => {
     const [ startRegistionDate , setStartRegistionDate ] = useState(new Date());
     const [ endRegistionDate , setEndRegistionDate ] = useState(new Date());
     const [ startMarathon , setStartMarathon ] = useState(new Date());
-    const [totalRegistion , setTotalRegistion] = useState(0)
+    const [totalRegistion , setTotalRegistion] = useState(1)
 
     const {user} = use(AuthContexts)
 
@@ -23,7 +26,25 @@ const AddMarathon = () => {
         lengthMarathon.push(marathonData)
          setTotalRegistion((prev)=> prev + lengthMarathon.length )
         const subMissionMarathon = {...marathonData , createdAt:new Date() , totalRegistrationCount:totalRegistion }
-        console.log(subMissionMarathon , )
+
+        axios.post(`${import.meta.env.VITE_MARATHON_url}/addMarathon` , subMissionMarathon )
+        .then((res)=>{
+            console.log(res.data)
+            if(res?.data){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Marathon Create successfully!",
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+                    e.target.reset()
+            } 
+        })
+        .catch(err=>{
+            console.log(err)
+            toast.error(err)
+        })
 
     }
 
@@ -45,11 +66,11 @@ const AddMarathon = () => {
 
                     <fieldset className="fieldset  rounded-box   p-4">
                        <label className="label font-medium text-xm text-gray-500">End Registration Date </label>
-                        <DatePicker required name='endRegistion' selected={endRegistionDate} ateFormat="yyyy-MM-dd" className='px-6 py-3 bg-base-100 outline-none shadow rounded  w-full' onChange={(date)=>setEndRegistionDate(date)} /> 
+                        <DatePicker required name='endRegistion' selected={endRegistionDate} dateFormat="yyyy-MM-dd" className='px-6 py-3 bg-base-100 outline-none shadow rounded  w-full' onChange={(date)=>setEndRegistionDate(date)} /> 
                     </fieldset>
                     <fieldset className="fieldset  rounded-box   p-4">
                        <label className="label font-medium text-xm text-gray-500">Start Marathon Date </label>
-                        <DatePicker required name='startMarathon' selected={startMarathon} ateFormat="yyyy-MM-dd" className='px-6 py-3 bg-base-100 outline-none shadow rounded  w-full' onChange={(date)=>setStartMarathon(date)} /> 
+                        <DatePicker required name='startMarathon' selected={startMarathon} dateFormat="yyyy-MM-dd" className='px-6 py-3 bg-base-100 outline-none shadow rounded  w-full' onChange={(date)=>setStartMarathon(date)} /> 
                     </fieldset>
 
                     <fieldset className="fieldset  rounded-box   p-4">
@@ -68,6 +89,8 @@ const AddMarathon = () => {
                         <option>30km</option>
                         <option>35km</option>
                         <option>40km</option>
+                        <option>50km</option>
+                        <option>60km</option>
                     </select>
                     </fieldset>
                      <fieldset className="fieldset  rounded-box   p-4">
