@@ -53,7 +53,7 @@ const Navbar = () => {
                                 </figure>
                             </li>
                             <li>
-                                <button onClick={handleSignOut} className='px-6 '>Logout</button>
+                                <button onClick={handleSignOut} className='px-6 py-3 bg-[#F9A51A] text-white'>Logout</button>
                             </li>
                 </>   : <>
 
