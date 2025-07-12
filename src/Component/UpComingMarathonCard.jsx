@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const UpComingMarathonCard = ({marathon}) => {
 
-    const {image , title ,startRegistrationDate ,endRegistrationDate , marathonStartDate , distance ,  description , location  } = marathon || {}
+    const {image , _id, title ,startRegistrationDate ,endRegistrationDate , marathonStartDate , distance ,  description , location  } = marathon || {}
 
     return (
     <div className="max-w-xs md:max-w-sm  rounded-md shadow-md bg-base-100   ">
@@ -28,7 +29,9 @@ const UpComingMarathonCard = ({marathon}) => {
                     <span  className = "text-gray-500 font-semibold" >{startRegistrationDate} - {endRegistrationDate}</span>
                 </p>
             </div>
-        <button type="button" className="w-full  p-3 font-semibold tracking-wide rounded  bg-violet-600  text-gray-50">See Deatils</button>
+            {/* <Link className='flex-1' to={`/deatils/${_id}`}> */}
+              <button type="button" className="w-full  p-3 font-semibold tracking-wide rounded  bg-violet-600  text-gray-50">See Marathon Deatils</button>
+            {/* </Link> */}
         </div>
     </div>
     );

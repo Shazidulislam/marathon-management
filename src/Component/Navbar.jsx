@@ -13,7 +13,6 @@ const Navbar = () => {
         
     }
 
-    console.log(user)
     const links = <div className=' md:flex justify-center items-center gap-2'>
         <li>
             <NavLink
