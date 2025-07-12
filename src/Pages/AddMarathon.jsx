@@ -11,7 +11,6 @@ const AddMarathon = () => {
     const [ startRegistionDate , setStartRegistionDate ] = useState(new Date());
     const [ endRegistionDate , setEndRegistionDate ] = useState(new Date());
     const [ startMarathon , setStartMarathon ] = useState(new Date());
-    const [totalRegistion , setTotalRegistion] = useState(1)
 
     const {user} = use(AuthContexts)
 
@@ -22,10 +21,10 @@ const AddMarathon = () => {
         const formData = new FormData(form)
         const marathonData = Object.fromEntries(formData.entries())
         marathonData.marathonCreateor = user?.email;
-        const lengthMarathon = []
-        lengthMarathon.push(marathonData)
-         setTotalRegistion((prev)=> prev + lengthMarathon.length )
-        const subMissionMarathon = {...marathonData , createdAt:new Date() , totalRegistrationCount:totalRegistion }
+        
+       
+        
+        const subMissionMarathon = {...marathonData , createdAt:new Date() , totalRegistrationCount:0 }
 
         axios.post(`${import.meta.env.VITE_MARATHON_url}/addMarathon` , subMissionMarathon )
         .then((res)=>{
@@ -102,11 +101,9 @@ const AddMarathon = () => {
                        <label className="label font-medium text-xm text-gray-500">Marathon Image</label>
                        <input type="url" required name='image' className="px-6 py-3 bg-base-100 outline-none shadow rounded  w-full " placeholder="Enter a marathon title" />
                     </fieldset>
-
                      <fieldset className="fieldset  rounded-box   p-4">
                        <button type='submit' className='w-full py-3 text-lg text-white rounded font-bold bg-indigo-900'>Add A Marathon</button>
                     </fieldset>
-
 
                </form>
             </div>

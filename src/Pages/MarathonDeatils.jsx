@@ -8,7 +8,8 @@ const MarathonDeatils = () => {
     const [deatilsMarathon , setDeatilsMarathon] = useState(null)
     const axiosInstance = useAxiousSecure();
     const {user} = useAuth()
-
+    const [totalRegistion , setTotalRegistion] = useState(1)
+    
     useEffect(()=>{
         axiosInstance.get(`/deatils/${id}`)
         .then((res)=>{
@@ -21,11 +22,33 @@ const MarathonDeatils = () => {
     const date = new Date(createdAt)
     const narMalDate = date.toLocaleDateString()
     // console.log(narMalDate)
+    
+    const [isOpen , setIsOpen] = useState(false)
+    console.log(isOpen)
+    useEffect(()=>{
+        const todayDate = new Date();
+        const startDate = new Date(startRegistion);
+        const endDate  = new Date(endRegistion);
+
+        if(todayDate >= startDate && todayDate <= endDate){
+               setIsOpen(true)
+        }else{
+            setIsOpen(false)
+        }
+
+
+    },[startRegistion ,endRegistion ])
 
     const handleMarathonRegistion =(e)=>{
-        e.preventDeault()
+        e.preventDefault()
          const form = e.target 
-         console.log(form)
+         const formData = new FormData(form)
+         const marthonRegistionData = Object.fromEntries(formData.entries())
+         const registionArray = []
+         registionArray.push(marthonRegistionData)
+         setTotalRegistion(prev=> prev + registionArray.length)
+         const subMitionRegustionData = {...marthonRegistionData ,totalRegistion }
+        
     }
 
     return (
@@ -105,9 +128,10 @@ const MarathonDeatils = () => {
                                 {/* <input type="text" name='lastName'  placeholder="Csontact Number" /> */}
                                 <textarea name='additionamInfo' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full " rows="5" ></textarea>' 
                         </fieldset>
+                         <button type='submit' disabled={!isOpen} className='bg-gradient-to-bl  from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded font-medium'>Submit Registion</button>
                       </form>
 
-                       <button type='submit' className='bg-gradient-to-bl  from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded font-medium'>Submit Registion</button>
+                      
                    </div>
 
                 </div>
