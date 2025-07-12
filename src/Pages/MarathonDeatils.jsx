@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import useAxiousSecure from '../Component/useAxiousSecure';
 import { useParams } from 'react-router';
 import useAuth from '../useAuth/useauth';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const MarathonDeatils = () => {
     const {id} = useParams()
@@ -49,6 +51,20 @@ const MarathonDeatils = () => {
          setTotalRegistion(prev=> prev + registionArray.length)
          const subMitionRegustionData = {...marthonRegistionData ,totalRegistion }
         
+         //send registion data 
+         axios.post(`${import.meta.env.VITE_MARATHON_url}/registion` , subMitionRegustionData)
+         .then((res)=>{
+            if(res?.data?.acknowledged){
+                 Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Your Marathon Create successfully!",
+                  showConfirmButton: false,
+                  timer: 1500
+                  });
+            }
+         })
+
     }
 
     return (
@@ -128,7 +144,7 @@ const MarathonDeatils = () => {
                                 {/* <input type="text" name='lastName'  placeholder="Csontact Number" /> */}
                                 <textarea name='additionamInfo' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full " rows="5" ></textarea>' 
                         </fieldset>
-                         <button type='submit' disabled={!isOpen} className='bg-gradient-to-bl  from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded font-medium'>Submit Registion</button>
+                         <button type='submit'  className='bg-gradient-to-bl  from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded font-medium'>Submit Registion</button>
                       </form>
 
                       
@@ -145,18 +161,3 @@ export default MarathonDeatils;
 
 
 
-
-// {
-//     "_id": "6870eb2d64a96f2c2b571236",
-//     "marathon_title": "New York City Marathon",
-//     "startRegistion": "2025-07-11",
-//     "endRegistion": "2025-08-08",
-//     "startMarathon": "2025-09-04",
-//     "location": "New York, USA",
-//     "distence": "20km",
-//     "description": "Run through the heart of Paris past world-famous landmarks like the Eiffel Tower, Notre Dame, and the Champs-Élysées. The Paris Marathon is one of Europe’s most scenic and romantic races. Whether you're chasing a personal best or soaking up the sights, this event delivers beauty, culture, and adrenaline in equal measure.",
-//     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgfgqluTWlu3vS-VmadV_uHGTOOebRYT4VSg&s",
-//     "marathonCreateor": "shazidulislam910@gmail.com",
-//     "createdAt": "2025-07-11T10:45:00.870Z",
-//     "totalRegistrationCount": 3
-// }
