@@ -3,7 +3,6 @@ import React from 'react';
 const MyMarathonTable = () => {
     return (
         <div>
-             <tbody className="border-b dark:bg-gray-50 dark:border-gray-300">
                                     <tr>
                                         <td className="px-3 text-2xl font-medium dark:text-gray-600">A</td>
                                         <td className="px-3 py-2">
@@ -27,7 +26,7 @@ const MyMarathonTable = () => {
                                            
                                         </td>
                                     </tr>
-                                </tbody>
+             
         </div>
     );
 };
