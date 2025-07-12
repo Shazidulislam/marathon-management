@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useAxiousSecure from '../Component/useAxiousSecure';
 import useAuth from '../useAuth/useauth';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const MyMarathonList = () => {
     const [maraThonData , setMaraThonData] = useState(null)
@@ -12,6 +14,39 @@ const MyMarathonList = () => {
         .then((res)=>setMaraThonData(res.data))
     },[axiosInstance , user])
 
+    const handleDeleteMarathon=(id)=>{
+
+         Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                  axios.delete(`${import.meta.env.VITE_MARATHON_url}/myMarathonList/${id}`)
+                  .then((res)=>{
+                     if(res?.data){
+                            Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                        });
+                          const deleteData = maraThonData.filter((marathon)=>marathon?._id !== id)
+                            setMaraThonData(deleteData)
+                            console.log(res?.data?.deletedCount)
+                     }
+                  })
+            }
+            });
+    }
+        
+  
+    
+       
+  
     return (
         <div>
             <h2 className='text-3xl md:text-4xl font-bold text-indigo-900 text-center pt-6'>My Marathon Journey</h2>
@@ -21,22 +56,14 @@ const MyMarathonList = () => {
                     <div className="container p-2 py-10 mx-auto sm:p-4 dark:text-gray-800">
                         <div className="overflow-x-auto">
                             <table className="w-full p-6 text-xs text-left whitespace-nowrap">
-                                {/* <colgroup>
-                                    <col className="w-5" />
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <col />
-                                    <col className="w-5" />
-                                </colgroup> */}
+                              
                                 <thead>
                                     <tr className=" bg-gray-300">
                                         <th className="p-3">Title</th>
                                         <th className="p-3">Location</th>
                                         <th className="p-3">Registion </th>
                                         <th className="p-3">Distence</th>
-                                        <th className="p-3">Email</th>
+                                        <th className="p-3">Star Date</th>
                                         <th className="p-3">Action</th>
                                         <th className="p-3">
                                         </th>
@@ -59,15 +86,15 @@ const MyMarathonList = () => {
                                             <p>{marathon?.distence}</p>
                                         </td>
                                         <td className="px-3 py-2">
-                                            <p>{marathon?.marathonCreateor}</p>
+                                            <p>{marathon?.startMarathon}</p>
                                         </td>
                                         <td className="px-3 py-2">
                                            <span>
                                             <button className='px-6 py-3'>Update</button>
                                            </span>
                                         </td>
-                                        <td className="px-3 py-2">
-                                           <button>Delete</button>
+                                        <td className="px-6 py-3">
+                                           <button onClick={()=>handleDeleteMarathon(`${marathon?._id}`)}>Delete</button>
                                         </td>
                                     </tr>
                                 </tbody>)  
