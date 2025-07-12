@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
             {
                 path:"/marathon",
                 // Component:Marathon
-                element:<Marathon></Marathon>
+                element:<PriviteRoute><Marathon></Marathon></PriviteRoute>
             },
         ]
     },
