@@ -23,7 +23,7 @@ const axiosInstance = useAxiousSecure();
     return (
         <div className='bg-gradient-to-tl from-[#827cf4] to-[#fff] min-h-screen py-10'>
             <h2 className='text-3xl md:text-5xl  font-bold text-indigo-900 text-center'>Your Added Marathon</h2>
-            <div className='px-2 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-20'>
+            <div className='px-6 md:px-12  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-20'>
                 {
                     maraThonData?.map((marathon)=><MarathonCard key={marathon._id} marathon={marathon}></MarathonCard>)
                 }

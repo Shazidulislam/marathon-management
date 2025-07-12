@@ -9,6 +9,7 @@ import Dashboard from "../Pages/Dashboard";
 import AddMarathon from "../Pages/AddMarathon";
 import MyMarathonList from "../Pages/MyMarathonList";
 import MyApplyList from "../Pages/MyApplyList";
+import MarathonDeatils from "../Pages/MarathonDeatils";
 
 
 
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
                 // Component:Marathon
                 element:<PriviteRoute><Marathon></Marathon></PriviteRoute>
             },
+            {
+                path:"/deatils/:id",
+                element:<PriviteRoute><MarathonDeatils></MarathonDeatils></PriviteRoute>
+            }
         ]
     },
     {
