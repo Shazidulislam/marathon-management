@@ -104,7 +104,7 @@ const AddMarathon = () => {
                     </fieldset>
 
                      <fieldset className="fieldset  rounded-box   p-4">
-                       <button className='w-full py-3 text-lg text-white rounded font-bold bg-indigo-900'>Add A Marathon</button>
+                       <button type='submit' className='w-full py-3 text-lg text-white rounded font-bold bg-indigo-900'>Add A Marathon</button>
                     </fieldset>
 
 

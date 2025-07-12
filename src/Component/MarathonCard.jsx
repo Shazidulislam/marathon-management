@@ -6,7 +6,7 @@ const MarathonCard = ({marathon}) => {
     const {image , marathon_title ,startRegistion ,endRegistion  ,  location  ,_id} = marathon || {}
 
     return (
-    <div className="max-w-xs md:max-w-sm  rounded-md shadow-md bg-base-100   ">
+    <div className="max-w-xs md:max-w-sm  rounded-md shadow-md bg-base-100 transition-transform duration-300 hover:scale-105  ">
         <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72  bg-gray-500" />
         <div className="flex flex-col justify-between py-6 px-3 space-y-8">
             <div className="space-y-2 flex-1">

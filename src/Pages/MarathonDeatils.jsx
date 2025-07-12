@@ -1,13 +1,138 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import useAxiousSecure from '../Component/useAxiousSecure';
+import { useParams } from 'react-router';
+import useAuth from '../useAuth/useauth';
 
 const MarathonDeatils = () => {
+    const {id} = useParams()
+    const [deatilsMarathon , setDeatilsMarathon] = useState(null)
+    const axiosInstance = useAxiousSecure();
+    const {user} = useAuth()
+
+    useEffect(()=>{
+        axiosInstance.get(`/deatils/${id}`)
+        .then((res)=>{
+           setDeatilsMarathon(res.data)
+        })
+    } , [axiosInstance , id])
+    
+    const {marathon_title ,image,totalRegistrationCount , location , description,startRegistion , createdAt, endRegistion , startMarathon , distence} = deatilsMarathon ||{}
+
+    const date = new Date(createdAt)
+    const narMalDate = date.toLocaleDateString()
+    // console.log(narMalDate)
+
+    const handleMarathonRegistion =(e)=>{
+        e.preventDeault()
+         const form = e.target 
+         console.log(form)
+    }
+
     return (
-        <div className='py-14 px-6 md:px-12 lg:px-16  min-h-svh bg-gradient-to-br from-blue-900 via-purple-500 to-pink-500 '>
-            <div className='px-6 py-10 border-2 border-[#ffffff90] shadow-white shadow-2xs rounded-2xl bg-[#ffffff20] text-white'>
-                <h2>My Marathon title</h2>
+        <div className='py-14 px-3 md:px-12 lg:px-16   min-h-svh bg-gradient-to-br from-blue-900 via-purple-500 to-pink-500 '>
+           
+            <div className=' gap-4  max-w-sm transition-transform duration-300 hover:scale-105  md:max-w-full  border-2 border-[#ffffff90]  shadow-white shadow-2xs rounded-2xl bg-[#ffffff20] text-white'>
+                <figure>
+                    <img className='h-[400px] md:h-[600px] w-full object-cover shadow-2xl   rounded-t-2xl' src={image} alt="" />
+                </figure>
+                <div className='p-3 space-y-4 md:px-12 mx-auto'>
+                    <h2 className='text-3xl md:text-4xl lg:text-5xl  font-bold text-center'>{marathon_title}</h2>
+                    <div className='space-y-6 grid grid-cols-12 gap-5 '>
+                        <div className=' col-span-12 md:col-span-5'>
+                            <p>
+                                <span className='font-bold '>Location : </span>
+                                <span>{location}</span>
+                            </p>
+                            <p>
+                                <span className='font-bold'>Registration Period :</span>
+                                <span>{startRegistion} - {endRegistion}</span>
+                            </p>
+                            <p>
+                                <span className='font-bold'>Marathon Date :</span>
+                                <span>{startMarathon}</span>
+                            </p>
+                            <p>
+                                <span className='font-bold'>Distance :</span>
+                                <span>{distence}</span>
+                            </p>
+                        </div>
+                        <div className=' col-span-12 md:col-span-7'>
+                          <p>
+                                <span className='font-bold'>Description :</span>
+                                <span>{description}</span>
+                            </p>
+                          <p>
+                                <span className='font-bold'>Created At: </span>
+                                <span>{narMalDate}</span>
+                            </p>
+                          <p>
+                                <span className='font-bold'>Total Registrations: </span>
+                                <span>{totalRegistrationCount}</span>
+                            </p>
+                        </div>
+
+                    </div>
+                   {/* register form section */}
+                   <div className='text-center pr-2 py-5'>
+                      <h2 className='text-3xl md:text-4xl  font-bold text-center'>Register for Marathon</h2>
+                      <form onSubmit={handleMarathonRegistion} className='text-white'>
+                        <fieldset className="fieldset  rounded-box p-4">
+                                <label className="label font-bold">Email</label>
+                                <input type="email" value={user?.email} name='email' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
+                        </fieldset>
+                        <fieldset className="fieldset  rounded-box p-4">
+                                <label className="label font-bold">Marathon Title</label>
+                                <input type="text" value={marathon_title} name='marathon_title' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
+                        </fieldset>
+                        <fieldset className="fieldset  rounded-box p-4">
+                                <label className="label font-bold">Marathon Start Date</label>
+                                <input type="text" value={startMarathon} name='startDate' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
+                        </fieldset>
+                        <fieldset className="fieldset  rounded-box p-4">
+                                <label className="label font-bold">First Name</label>
+                                <input type="text" name='firstName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Frist Name" />
+                        </fieldset>
+                        <fieldset className="fieldset  rounded-box p-4">
+                                <label className="label font-bold">Last Name</label>
+                                <input type="text" name='lastName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Last Name" />
+                        </fieldset>
+                        <fieldset className="fieldset  rounded-box p-4">
+                                <label className="label font-bold">Contact Number</label>
+                                <input type="text" name='lastName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Csontact Number" />
+                        </fieldset>
+                        <fieldset className="fieldset  rounded-box p-4">
+                                <label className="label font-bold">Additional Info</label>
+                                {/* <input type="text" name='lastName'  placeholder="Csontact Number" /> */}
+                                <textarea name='additionamInfo' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full " rows="5" ></textarea>' 
+                        </fieldset>
+                      </form>
+
+                       <button type='submit' className='bg-gradient-to-bl  from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded font-medium'>Submit Registion</button>
+                   </div>
+
+                </div>
             </div>
         </div>
     );
 };
 
 export default MarathonDeatils;
+
+
+
+
+
+// {
+//     "_id": "6870eb2d64a96f2c2b571236",
+//     "marathon_title": "New York City Marathon",
+//     "startRegistion": "2025-07-11",
+//     "endRegistion": "2025-08-08",
+//     "startMarathon": "2025-09-04",
+//     "location": "New York, USA",
+//     "distence": "20km",
+//     "description": "Run through the heart of Paris past world-famous landmarks like the Eiffel Tower, Notre Dame, and the Champs-Élysées. The Paris Marathon is one of Europe’s most scenic and romantic races. Whether you're chasing a personal best or soaking up the sights, this event delivers beauty, culture, and adrenaline in equal measure.",
+//     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgfgqluTWlu3vS-VmadV_uHGTOOebRYT4VSg&s",
+//     "marathonCreateor": "shazidulislam910@gmail.com",
+//     "createdAt": "2025-07-11T10:45:00.870Z",
+//     "totalRegistrationCount": 3
+// }
