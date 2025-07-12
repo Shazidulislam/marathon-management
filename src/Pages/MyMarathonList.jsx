@@ -29,7 +29,7 @@ const MyMarathonList = () => {
                   axios.delete(`${import.meta.env.VITE_MARATHON_url}/myMarathonList/${id}`)
                   .then((res)=>{
                      if(res?.data){
-                            Swal.fire({
+                        Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",
                         icon: "success"
@@ -88,13 +88,30 @@ const MyMarathonList = () => {
                                         <td className="px-3 py-2">
                                             <p>{marathon?.startMarathon}</p>
                                         </td>
-                                        <td className="px-3 py-2">
-                                           <span>
-                                            <button className='px-6 py-3'>Update</button>
-                                           </span>
-                                        </td>
+                                        
                                         <td className="px-6 py-3">
                                            <button onClick={()=>handleDeleteMarathon(`${marathon?._id}`)}>Delete</button>
+                                        </td>
+                                        <td className="px-3 py-2">
+                                           <span>
+                                            {/* <button className='px-6 py-3'>Update Marathon</button> */}
+                                            {/* Open the modal using document.getElementById('ID').showModal() method */}
+                                            <button className="py-3" onClick={()=>document.getElementById('my_modal_1').showModal()}>Update </button>
+                                            <dialog id="my_modal_1" className="modal">
+                                            <div className="modal-box">
+                                                
+                                                    <fieldset className="fieldset w-full">
+                                                        <label className="label font-bold">Title</label>
+                                                        <input type="text" className="pl-3 py-3 outline-none  bg-slate-50 rounded shadow-md w-full" placeholder="My awesome page" />
+                                                    </fieldset>
+                                                <div className="modal-action">
+                                                <form method="dialog">
+                                                   <button className='px-6 py-3 bg-red-500 rounded text-white'>Cancel</button>
+                                                </form>
+                                                </div>
+                                            </div>
+                                            </dialog>
+                                           </span>
                                         </td>
                                     </tr>
                                 </tbody>)  

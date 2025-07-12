@@ -37,8 +37,6 @@ const MarathonDeatils = () => {
         }else{
             setIsOpen(false)
         }
-
-
     },[startRegistion ,endRegistion ])
 
     const handleMarathonRegistion =(e)=>{
@@ -117,34 +115,36 @@ const MarathonDeatils = () => {
                       <form onSubmit={handleMarathonRegistion} className='text-white'>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">Email</label>
-                                <input type="email" value={user?.email} name='email' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
+                                <input required type="email" value={user?.email} name='email' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
                         </fieldset>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">Marathon Title</label>
-                                <input type="text" value={marathon_title} name='marathon_title' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
+                                <input required type="text" value={marathon_title} name='marathon_title' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
                         </fieldset>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">Marathon Start Date</label>
-                                <input type="text" value={startMarathon} name='startDate' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
+                                <input required type="text" value={startMarathon} name='startDate' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="" />
                         </fieldset>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">First Name</label>
-                                <input type="text" name='firstName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Frist Name" />
+                                <input required type="text" name='firstName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Frist Name" />
                         </fieldset>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">Last Name</label>
-                                <input type="text" name='lastName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Last Name" />
+                                <input required type="text" name='lastName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Last Name" />
                         </fieldset>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">Contact Number</label>
-                                <input type="text" name='lastName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Csontact Number" />
+                                <input required type="text" name='lastName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Csontact Number" />
                         </fieldset>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">Additional Info</label>
-                                {/* <input type="text" name='lastName'  placeholder="Csontact Number" /> */}
+                                {/* <input required type="text" name='lastName'  placeholder="Csontact Number" /> */}
                                 <textarea name='additionamInfo' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full " rows="5" ></textarea>' 
                         </fieldset>
-                         <button type='submit'  className='bg-gradient-to-bl  from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded font-medium'>Submit Registion</button>
+                         <button disabled={!isOpen} type='submit' onClick={()=>{
+                            if(!isOpen)return
+                         }} className={` px-6 py-3 bg-gradient-to-bl  from-blue-500 via-purple-500 to-pink-500 text-white rounded font-medium ${isOpen ?"" :"btn-disabled cursor-not-allowed opacity-50"} `}>Submit Registion</button>
                       </form>
 
                       
