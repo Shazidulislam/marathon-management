@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import marathonlogo2 from "../assets/marathon-img/marathon-logo.jpg"
 import AuthContexts from '../Contexts/AuthContexts';
 
@@ -7,9 +7,10 @@ import AuthContexts from '../Contexts/AuthContexts';
 const Navbar = () => {
     
     const {user , signOutUser} = use(AuthContexts)
-
+    const navigate = useNavigate()
     const handleSignOut =()=>{
         signOutUser()
+        navigate("/signin")
         
     }
 

@@ -1,6 +1,6 @@
 
 import React, { use } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import AuthContexts from '../Contexts/AuthContexts';
@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 const Register = () => {
         const {createUser ,updateUser, setUser ,setError, error, user , auth } = use(AuthContexts)
        const navigate = useNavigate()
+       const location = useLocation()
 
     const createUserwithGoogle=()=>{
         const provider = new GoogleAuthProvider()
@@ -22,7 +23,7 @@ const Register = () => {
             showConfirmButton: false,
             timer: 1500
             });
-            navigate("/")
+            navigate(`${location.state ? location.state :"/"}`)
            }
             
         })
@@ -74,7 +75,7 @@ const Register = () => {
 
             });
             e.target.reset()
-            navigate("/")
+            navigate(`${location.state ? location.state :"/"}`)
            }
         })
         .catch(errors=>{
