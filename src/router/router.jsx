@@ -10,6 +10,7 @@ import AddMarathon from "../Pages/AddMarathon";
 import MyMarathonList from "../Pages/MyMarathonList";
 import MyApplyList from "../Pages/MyApplyList";
 import MarathonDeatils from "../Pages/MarathonDeatils";
+import UpdateMarathon from "../Contexts/UpdateMarathon";
 
 
 
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
             {
                 path:"/deatils/:id",
                 element:<PriviteRoute><MarathonDeatils></MarathonDeatils></PriviteRoute>
+            },
+            {
+                path:"/update/:id",
+                element:<PriviteRoute><UpdateMarathon></UpdateMarathon></PriviteRoute>
             }
         ]
     },

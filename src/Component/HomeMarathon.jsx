@@ -4,7 +4,6 @@ import MarathonCard from './MarathonCard';
 
 const HomeMarathon = () => {
     const [limiteMarathon , setLimiteMarathon] = useState(null)
-    
     const axiosInstance = useAxiousSecure()
 
     useEffect(()=>{

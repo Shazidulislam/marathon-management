@@ -60,6 +60,7 @@ const MarathonDeatils = () => {
                   showConfirmButton: false,
                   timer: 1500
                   });
+                  e.target.reset()
             }
          })
 
@@ -135,7 +136,7 @@ const MarathonDeatils = () => {
                         </fieldset>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">Contact Number</label>
-                                <input required type="text" name='lastName' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Csontact Number" />
+                                <input required type="text" name='contactNumber' className="pl-3 py-3 outline-none  bg-[#ffffff30] rounded shadow-md w-full" placeholder="Csontact Number" />
                         </fieldset>
                         <fieldset className="fieldset  rounded-box p-4">
                                 <label className="label font-bold">Additional Info</label>
