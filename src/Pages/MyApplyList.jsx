@@ -3,12 +3,13 @@ import useAxiousSecure from '../Component/useAxiousSecure';
 import useAuth from '../useAuth/useauth';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import UpdateRegistion from '../Component/UpdateRegistion';
 
 const MyApplyList = () => {
         const [maraThonData , setMaraThonData] = useState(null)
+        const [singleMarathonData , setSingleMarathonData] = useState({})
         const axiosInstance = useAxiousSecure()
         const {user} = useAuth()
-
         useEffect(()=>{
            axiosInstance.get(`/applyedList/${user?.email}`)
            .then((res)=>{
@@ -17,21 +18,7 @@ const MyApplyList = () => {
            })
         },[axiosInstance ,user])
 
-    
-  
-// {
-//     "_id": "687380b563bbb82037cf400e",
-//     "email": "shazidulislam910@gmail.com",
-//     "marathon_title": "Add Upozila Marathon",
-//     "startDate": "2025-07-24",
-//     "firstName": "Shazid-UL",
-//     "lastName": "01605199098",
-//     "additionamInfo": "A fun 5K right on the world's longest beach. Chill vibes, good crowd, and the perfect event for all fitness levels.\n",
-//     "totalRegistion": 1
-// }
-
    const handleDeleteMarathon=(id)=>{
-
          Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -60,6 +47,12 @@ const MyApplyList = () => {
     }
       
 
+          const handleSingleData =(id)=>{
+              console.log(id);
+              const singleData = maraThonData.find((marathon)=>marathon?._id === id)
+              setSingleMarathonData(singleData)
+           }   
+  
 
 
     return (
@@ -116,11 +109,15 @@ const MyApplyList = () => {
                                             <td className="px-3 py-2">
                                             <span>
                                             
-                                                <button className="py-3" onClick={()=>document.getElementById('my_modal_1').showModal()}>Update </button>
+                                                <button className="py-3" onClick={()=>{
+                                                    handleSingleData(`${marathon?._id}`);
+                                                    document.getElementById('my_modal_1').showModal();
+
+                                                }}>Update </button>
                                                 <dialog id="my_modal_1" className="modal">
                                                 <div className="modal-box">
                                                         <h2 className='text-3xl text-center font-bold text-indigo-900'>Revise Marathon Entry</h2>
-                                                    {/* <UpdateMarathon ></UpdateMarathon> */}
+                                                      <UpdateRegistion singleMarathonData={singleMarathonData}></UpdateRegistion>
                                                     <div className="modal-action">
                                                     <form method="dialog">
                                                     <button className='px-6 py-3 bg-red-500 rounded text-white'>Cancel</button>
@@ -133,7 +130,6 @@ const MyApplyList = () => {
                                         </tr>
                                     </tbody>)  
                                     }
-                                
                                 </table>
                             </div>
                         </div>

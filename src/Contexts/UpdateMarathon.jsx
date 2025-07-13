@@ -5,15 +5,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
 
 
-const UpdateMarathon = ({marathon}) => {
+const UpdateMarathon = ({singleData}) => {
 
-    
+
 
   const [ startRegistionDate , setStartRegistionDate ] = useState(new Date());
     const [ endRegistionDate , setEndRegistionDate ] = useState(new Date());
     const [ startMarathonData , setStartMarathonData ] = useState(new Date());
     
-    const {image ,description,  marathon_title ,startRegistion ,endRegistion  ,distence,  location  ,_id , startMarathon} = marathon || {}
+    const {image ,description,  marathon_title ,startRegistion ,endRegistion  ,distence,  location  ,_id , startMarathon} = singleData || {}
     const handleUpdateMarathon=(e)=>{
         e.preventDefault()
         const form = e.target;
