@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth,  onAuthStateChanged, signInWithEmailAndPassword,  signOut, updateProfile } from 'firebase/auth';
 import { app } from '../firebase/firebase.config';
 import AuthContexts from './AuthContexts';
-import { toast } from 'react-toastify';
 
 const AuthProvider = ({children}) => {
     const [user , setUser] = useState(null)
@@ -34,9 +33,7 @@ const AuthProvider = ({children}) => {
 
     const signOutUser =()=>{
         signOut(auth)
-        .then(()=>{
-           toast.success("Log out successfully!")
-        })
+        
 
     }
 

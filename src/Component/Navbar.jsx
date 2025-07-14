@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
 import marathonlogo2 from "../assets/marathon-img/marathon-logo.jpg"
 import AuthContexts from '../Contexts/AuthContexts';
+import { toast } from 'react-toastify';
 
 
 const Navbar = () => {
@@ -10,8 +11,11 @@ const Navbar = () => {
     const navigate = useNavigate()
     const handleSignOut =()=>{
         signOutUser()
-        navigate("/signin")
-        
+         .then(()=>{
+          toast.success("Log out successfully!")
+          navigate("/signin")
+
+        })
     }
 
     const links = <div className=' md:flex justify-center items-center gap-2'>

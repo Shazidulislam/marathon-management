@@ -38,6 +38,7 @@ const MarathonDeatils = () => {
     },[startRegistion ,endRegistion ])
 
     const handleMarathonRegistion =(e)=>{
+        
         e.preventDefault()
          const form = e.target 
          const formData = new FormData(form)
@@ -114,7 +115,7 @@ const MarathonDeatils = () => {
                         </div>
 
                     </div>
-                    register form section
+                    {/* register form section */}
                    <div className='text-center pr-2 py-5'>
                       <h2 className='text-3xl md:text-4xl  font-bold text-center'>Register for Marathon</h2>
                       <form onSubmit={handleMarathonRegistion} className='text-white'>

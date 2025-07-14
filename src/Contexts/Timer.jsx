@@ -4,7 +4,6 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 
 const Timer = ({ startRegistion, endRegistion }) => {
-  // Check if the props exist before using them
   if (!startRegistion || !endRegistion) {
     return <p className="text-white p-4 ">Dates not provided</p>;
   }
@@ -20,6 +19,7 @@ const Timer = ({ startRegistion, endRegistion }) => {
   const initialRemainingTime = Math.floor((end - now) / 1000);
 
   if (initialRemainingTime <= 0) {
+    
     return (
       <p className="text-white rounded-full text-center p-4 border-2 border-[#ffffff90] font-medium">
         Registration Closed
