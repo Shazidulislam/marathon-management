@@ -4,6 +4,8 @@ import { useParams } from 'react-router';
 import useAuth from '../useAuth/useauth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Timer from '../Contexts/Timer';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 const MarathonDeatils = () => {
     const {id} = useParams()
@@ -11,7 +13,13 @@ const MarathonDeatils = () => {
     const axiosInstance = useAxiousSecure();
     const {user} = useAuth()
     const [totalRegistion , setTotalRegistion] = useState(1)
+
+    // const todayDate = new Date();
+    // const startDate = new Date(startRegistion);
+    // const endDate  = new Date(endRegistion);
     
+    // const duration = (endDate - startDate )
+    // const initialRemainingTime = (endDate -todayDate )
     useEffect(()=>{
         axiosInstance.get(`/deatils/${id}`)
         .then((res)=>{
@@ -76,7 +84,7 @@ const MarathonDeatils = () => {
                 <div className='p-3 space-y-4 md:px-12 mx-auto'>
                     <h2 className='text-3xl md:text-4xl lg:text-5xl  font-bold text-center'>{marathon_title}</h2>
                     <div className='space-y-6 grid grid-cols-12 gap-5 '>
-                        <div className=' col-span-12 md:col-span-5'>
+                        <div className=' col-span-12 md:col-span-4'>
                             <p>
                                 <span className='font-bold '>Location : </span>
                                 <span>{location}</span>
@@ -94,7 +102,7 @@ const MarathonDeatils = () => {
                                 <span>{distence}</span>
                             </p>
                         </div>
-                        <div className=' col-span-12 md:col-span-7'>
+                        <div className=' col-span-12 md:col-span-6'>
                           <p>
                                 <span className='font-bold'>Description :</span>
                                 <span>{description}</span>
@@ -107,6 +115,30 @@ const MarathonDeatils = () => {
                                 <span className='font-bold'>Total Registrations: </span>
                                 <span>{totalRegistrationCount}</span>
                             </p>
+                        </div>
+                        <div className='col-span-12 md:col-span-2'>
+                          {/* <Timer></Timer>               */}
+                          {/* <CountdownCircleTimer
+                           isPlaying
+                           duration={duration}
+                           initialRemainingTime={initialRemainingTime}
+                           strokeWidth={12} */}
+                          {/* > */}
+                                    {/* {({ remainingTime }) => {
+                                        const days = Math.floor(remainingTime / 86400);
+                                        const hours = Math.floor((remainingTime % 86400) / 3600);
+                                        const minutes = Math.floor((remainingTime % 3600) / 60);
+                                        const seconds = Math.floor(remainingTime % 60);
+
+                                        return (
+                                            <div className="text-center text-xl font-bold">
+                                            <p>{days}d {hours}h</p>
+                                            <p>{minutes}m {seconds}s</p>
+                                            </div>
+                                        );
+                                        }}
+
+                          </CountdownCircleTimer> */}
                         </div>
 
                     </div>

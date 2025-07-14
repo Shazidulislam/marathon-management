@@ -1,35 +1,51 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
+import useAxiousSecure from '../Component/useAxiousSecure';
+import { useParams } from 'react-router';
 
 
-const UpdateMarathon = ({singleData}) => {
-
-
-
+const UpdateMarathon = () => {
+    const {id} = useParams()
+    const [singleData , aetSingleData] = useState({})
   const [ startRegistionDate , setStartRegistionDate ] = useState(new Date());
     const [ endRegistionDate , setEndRegistionDate ] = useState(new Date());
     const [ startMarathonData , setStartMarathonData ] = useState(new Date());
+   
+    const axiosInstance = useAxiousSecure()
+
+    useEffect(()=>{
+        axiosInstance.get(`/board/mymarathon/${id}`)
+        .then((res)=>{
+            console.log(res)
+            aetSingleData(res?.data)
+        })
+        .catch(err=>console.log(err))
+    },[ id,axiosInstance ])
     
     const {image ,description,  marathon_title ,startRegistion ,endRegistion  ,distence,  location  ,_id , startMarathon} = singleData || {}
+    console.log(_id)
+   
+
+ 
     const handleUpdateMarathon=(e)=>{
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form)
         const updateMarathonData = Object.fromEntries(formData.entries())
-
+     
 
         //update the marathon
         axios.patch(`${import.meta.env.VITE_MARATHON_url}/myMarathonModal/${_id}`, updateMarathonData)
         .then((res)=>{
-            console.log(res.date)
-            if(res.date){
+            console.log(res?.data)
+            if(res?.data?.acknowledged){
                  Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Your Marathon Create successfully!",
+                    title: "Your Marathon UpdateSuccessfully successfully!",
                     showConfirmButton: false,
                     timer: 1500
                     });
@@ -39,7 +55,9 @@ const UpdateMarathon = ({singleData}) => {
     }
 
     return (
-        <form onSubmit={handleUpdateMarathon} >
+      <div className='px-2 md:px-12'>
+          <form onSubmit={handleUpdateMarathon} >
+            <h2 className='text-3xl text-center pt-10 font-bold text-indigo-900'>Update Marathon</h2>
              <fieldset className="fieldset  rounded-box   p-4">
                                    <label className="label font-medium text-xm text-gray-500">Marathon Title</label>
                                    <input type="text" defaultValue={marathon_title} required name='marathon_title' className="px-6 py-3 bg-base-100 outline-none shadow rounded  w-full " placeholder="Enter a marathon title" />
@@ -93,6 +111,7 @@ const UpdateMarathon = ({singleData}) => {
                                </fieldset>
             
         </form>
+      </div>
     );
 };
 

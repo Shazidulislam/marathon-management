@@ -5,12 +5,13 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import UpdateRegistion from '../Component/UpdateRegistion';
 import { IoSearchSharp } from 'react-icons/io5';
+import { Link } from 'react-router';
 
 const MyApplyList = () => {
         const [maraThonData , setMaraThonData] = useState(null)
         const [filterData , setFilterData] = useState([])
         const [searchText , setSearchText] = useState("")
-        const [singleMarathonData , setSingleMarathonData] = useState({})
+       
         const axiosInstance = useAxiousSecure()
         const {user} = useAuth()
         useEffect(()=>{
@@ -56,11 +57,7 @@ const MyApplyList = () => {
     }
       
 
-          const handleSingleData =(id)=>{
-              console.log(id);
-              const singleData = maraThonData?.find((marathon)=>marathon?._id === id)
-              setSingleMarathonData(singleData)
-           }   
+         
   
 
 
@@ -121,7 +118,10 @@ const MyApplyList = () => {
                                             <button onClick={()=>handleDeleteMarathon(`${marathon?._id}`)}>Delete</button>
                                             </td>
                                             <td className="px-3 py-2">
-                                            <span>
+                                                <span>
+                                                   <Link to={`/board/myapplylist/${marathon?._id}`}> Update</Link>
+                                                </span>
+                                            {/* <span>
                                             
                                                 <button className="py-3" onClick={()=>{
                                                     handleSingleData(`${marathon?._id}`);
@@ -130,7 +130,7 @@ const MyApplyList = () => {
                                                 }}>Update </button>
                                                 <dialog id="my_modal_1" className="modal">
                                                 <div className="modal-box">
-                                                        <h2 className='text-3xl text-center font-bold text-indigo-900'>Revise Marathon Entry</h2>
+                                                       
                                                       <UpdateRegistion singleMarathonData={singleMarathonData}></UpdateRegistion>
                                                     <div className="modal-action">
                                                     <form method="dialog">
@@ -139,7 +139,7 @@ const MyApplyList = () => {
                                                     </div>
                                                 </div>
                                                 </dialog>
-                                            </span>
+                                            </span> */}
                                             </td>
                                         </tr>
                                     </tbody>)  

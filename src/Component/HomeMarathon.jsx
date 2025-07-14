@@ -15,7 +15,7 @@ const HomeMarathon = () => {
     },[axiosInstance])
     
     return (
-        <div className='py-10  bg-gradient-to-bl from-[#827cf4] to-[#feeaea]  '>
+        <div className='py-10 px-2 md:px-12 bg-gradient-to-bl from-[#827cf4] to-[#feeaea]  '>
             <div>
                 {
                     limiteMarathon?.length == 0 ? <>

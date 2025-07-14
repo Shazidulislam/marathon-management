@@ -10,8 +10,9 @@ import AddMarathon from "../Pages/AddMarathon";
 import MyMarathonList from "../Pages/MyMarathonList";
 import MyApplyList from "../Pages/MyApplyList";
 import MarathonDeatils from "../Pages/MarathonDeatils";
-import UpdateMarathon from "../Contexts/UpdateMarathon";
 import Error from "../Pages/Error";
+import UpdateMarathon from "../Contexts/UpdateMarathon";
+import UpdateRegistion from "../Component/UpdateRegistion";
 
 
 
@@ -44,10 +45,7 @@ export const router = createBrowserRouter([
                 path:"/deatils/:id",
                 element:<PriviteRoute><MarathonDeatils></MarathonDeatils></PriviteRoute>
             },
-            {
-                path:"/update/:id",
-                element:<PriviteRoute><UpdateMarathon></UpdateMarathon></PriviteRoute>
-            }
+           
         ]
     },
     {
@@ -65,6 +63,14 @@ export const router = createBrowserRouter([
             {
                 path:"/board/myapply",
                 element:<PriviteRoute><MyApplyList></MyApplyList></PriviteRoute>
+            },
+            {
+                path:"/board/mymarathon/:id",
+                element:<PriviteRoute><UpdateMarathon></UpdateMarathon></PriviteRoute>
+            },
+            {
+                path:"/board/myapplylist/:id",
+                element:<PriviteRoute><UpdateRegistion></UpdateRegistion></PriviteRoute>     
             }
         ]
     },

@@ -8,7 +8,6 @@ import { Link } from 'react-router';
 
 const MyMarathonList = () => {
     const [maraThonData , setMaraThonData] = useState(null)
-    const [singleData , setSingleData] = useState({})
     const axiosInstance = useAxiousSecure()
     const {user} = useAuth()
 
@@ -48,10 +47,7 @@ const MyMarathonList = () => {
             });
     }
     
-    const handleUpdateMarathonData=(id)=>{
-        const singleMarathon = maraThonData.find((marathon)=>marathon._id===id)
-        setSingleData(singleMarathon)
-    }
+ 
   
     
        
@@ -107,24 +103,13 @@ const MyMarathonList = () => {
                                             <button onClick={()=>handleDeleteMarathon(`${marathon?._id}`)}>Delete</button>
                                             </td>
                                             <td className="px-3 py-2">
-                                            <span>
-                                            
-                                                <button className="py-3" onClick={()=>{
-                                                    document.getElementById('my_modal_1').showModal();
-                                                    handleUpdateMarathonData(`${marathon?._id}`)
-                                                }}>Update </button>
-                                                <dialog id="my_modal_1" className="modal">
-                                                <div className="modal-box">
-                                                        <h2 className='text-3xl text-center font-bold text-indigo-900'>Revise Marathon Entry</h2>
-                                                    <UpdateMarathon singleData={singleData}></UpdateMarathon>
-                                                    <div className="modal-action">
-                                                    <form method="dialog">
-                                                    <button className='px-6 py-3 bg-red-500 rounded text-white'>Cancel</button>
-                                                    </form>
-                                                    </div>
-                                                </div>
-                                                </dialog>
-                                            </span>
+                                           <span>
+                                             <Link to={`/board/mymarathon/${marathon?._id}`}>
+                                                 <button className='px-6 py-3 '>
+                                                     update
+                                                  </button>
+                                             </Link>
+                                           </span>
                                             </td>
                                         </tr>
                                     </tbody>)  
