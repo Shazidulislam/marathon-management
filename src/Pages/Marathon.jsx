@@ -12,13 +12,10 @@ const axiosInstance = useAxiousSecure();
         axiosInstance.get(`marathonData/${user?.email}`)
         .then((res)=>{
             setMaraThonData(res?.data)
-            console.log(res)
         })
-        .catch((err)=>console.log(err))
     },[axiosInstance , user])
 
     
-    console.log(maraThonData)
 
     return (
         <div className='bg-gradient-to-tl from-[#827cf4] to-[#fff] min-h-screen py-10'>

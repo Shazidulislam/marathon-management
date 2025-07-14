@@ -17,7 +17,6 @@ const AddMarathon = () => {
     const handleAddMarathon=(e)=>{
         e.preventDefault()
         const form = e.target;
-        console.log(form)
         const formData = new FormData(form)
         const marathonData = Object.fromEntries(formData.entries())
         marathonData.marathonCreateor = user?.email;
@@ -28,7 +27,6 @@ const AddMarathon = () => {
 
         axios.post(`${import.meta.env.VITE_MARATHON_url}/addMarathon` , subMissionMarathon )
         .then((res)=>{
-            console.log(res.data)
             if(res?.data){
                 Swal.fire({
                     position: "top-end",
@@ -41,7 +39,6 @@ const AddMarathon = () => {
             } 
         })
         .catch(err=>{
-            console.log(err)
             toast.error(err)
         })
 

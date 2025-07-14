@@ -14,7 +14,6 @@ const Navbar = () => {
          .then(()=>{
           toast.success("Log out successfully!")
           navigate("/signin")
-
         })
     }
 

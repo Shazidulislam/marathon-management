@@ -9,7 +9,6 @@ const HomeMarathon = () => {
     useEffect(()=>{
         axiosInstance.get("/limiteMarathon")
         .then((res)=>{
-            console.log(res.data)
             setLimiteMarathon(res.data)
         })
     },[axiosInstance])
