@@ -4,9 +4,12 @@ import useAuth from '../useAuth/useauth';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import UpdateRegistion from '../Component/UpdateRegistion';
+import { IoSearchSharp } from 'react-icons/io5';
 
 const MyApplyList = () => {
         const [maraThonData , setMaraThonData] = useState(null)
+        const [filterData , setFilterData] = useState([])
+        const [searchText , setSearchText] = useState("")
         const [singleMarathonData , setSingleMarathonData] = useState({})
         const axiosInstance = useAxiousSecure()
         const {user} = useAuth()
@@ -15,8 +18,14 @@ const MyApplyList = () => {
            .then((res)=>{
             console.log(res.data)
             setMaraThonData(res?.data);
+            setFilterData(res?.data)
            })
         },[axiosInstance ,user])
+
+        useEffect(()=>{
+             const  filtered =  maraThonData?.filter((marathon)=>marathon?.marathon_title?.toLowerCase()?.includes(searchText?.toLocaleLowerCase())  )  
+             setFilterData(filtered)
+        },[maraThonData , searchText])
 
    const handleDeleteMarathon=(id)=>{
          Swal.fire({
@@ -49,7 +58,7 @@ const MyApplyList = () => {
 
           const handleSingleData =(id)=>{
               console.log(id);
-              const singleData = maraThonData.find((marathon)=>marathon?._id === id)
+              const singleData = maraThonData?.find((marathon)=>marathon?._id === id)
               setSingleMarathonData(singleData)
            }   
   
@@ -57,16 +66,21 @@ const MyApplyList = () => {
 
     return (
         <div className='py-10'>
-      
-
              {
-                maraThonData?.length == 0 ? <>
+                        maraThonData?.length == 0 ? <>
                         <div className='px-4 py-10 max-w-xl bg-indigo-100 mx-auto rounded  border-2 border-indigo-900'>
                             <h2 className='text-2xl font-medium  text-center not-only: md:text-3xl text-indigo-900'>No marathons found. Please add a new one to get started!</h2>
                         </div>
 
                 </> : <>
-                        <h2 className='text-3xl md:text-4xl font-bold text-indigo-900 text-center pt-6'>My  Applyed Marathon List</h2>
+                       <div className=''>
+                             <h2 className='text-3xl md:text-4xl font-bold text-indigo-900 text-center pt-6'>My  Applyed Marathon List</h2>
+                            <fieldset className="fieldset pt-3 relative rounded-box w-md mx-auto ">
+                                 <input type="text" required value={searchText} onChange={(e)=>setSearchText(e.target.value) } className="px-6 py-4 border outline-none" placeholder="Search By Title" />
+                               <IoSearchSharp className='absolute top-7 font-bold  right-4' size={24} />
+                            </fieldset>
+                           
+                       </div>
                           <div className="container p-2 py-10 mx-auto sm:p-4 dark:text-gray-800">
                             <div className="overflow-x-auto">
                                 <table className="w-full p-6 text-xs text-left whitespace-nowrap">
@@ -84,7 +98,7 @@ const MyApplyList = () => {
                                         </tr>
                                     </thead>
                                     {
-                                    maraThonData?.map((marathon)=>  
+                                    filterData?.map((marathon)=>  
 
                                     <tbody key={marathon._id} className="border-b  bg-gray-50 dark:border-gray-300">
                                         <tr>

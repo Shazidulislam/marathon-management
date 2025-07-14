@@ -11,6 +11,7 @@ import MyMarathonList from "../Pages/MyMarathonList";
 import MyApplyList from "../Pages/MyApplyList";
 import MarathonDeatils from "../Pages/MarathonDeatils";
 import UpdateMarathon from "../Contexts/UpdateMarathon";
+import Error from "../Pages/Error";
 
 
 
@@ -66,5 +67,9 @@ export const router = createBrowserRouter([
                 element:<PriviteRoute><MyApplyList></MyApplyList></PriviteRoute>
             }
         ]
+    },
+    {
+        path:"/*",
+        element:<Error></Error>
     }
 ])
