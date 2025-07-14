@@ -5,7 +5,6 @@ import useAuth from '../useAuth/useauth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Timer from '../Contexts/Timer';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 const MarathonDeatils = () => {
     const {id} = useParams()
@@ -13,13 +12,6 @@ const MarathonDeatils = () => {
     const axiosInstance = useAxiousSecure();
     const {user} = useAuth()
     const [totalRegistion , setTotalRegistion] = useState(1)
-
-    // const todayDate = new Date();
-    // const startDate = new Date(startRegistion);
-    // const endDate  = new Date(endRegistion);
-    
-    // const duration = (endDate - startDate )
-    // const initialRemainingTime = (endDate -todayDate )
     useEffect(()=>{
         axiosInstance.get(`/deatils/${id}`)
         .then((res)=>{
@@ -31,10 +23,8 @@ const MarathonDeatils = () => {
 
     const date = new Date(createdAt)
     const narMalDate = date.toLocaleDateString()
-    // console.log(narMalDate)
     
     const [isOpen , setIsOpen] = useState(false)
-    console.log(isOpen)
     useEffect(()=>{
         const todayDate = new Date();
         const startDate = new Date(startRegistion);
@@ -73,6 +63,9 @@ const MarathonDeatils = () => {
          })
 
     }
+
+    
+
 
     return (
         <div className='py-14 px-3 md:px-12 lg:px-16   min-h-svh bg-gradient-to-br from-blue-900 via-purple-500 to-pink-500 '>
@@ -117,32 +110,11 @@ const MarathonDeatils = () => {
                             </p>
                         </div>
                         <div className='col-span-12 md:col-span-2'>
-                          {/* <Timer></Timer>               */}
-                          {/* <CountdownCircleTimer
-                           isPlaying
-                           duration={duration}
-                           initialRemainingTime={initialRemainingTime}
-                           strokeWidth={12} */}
-                          {/* > */}
-                                    {/* {({ remainingTime }) => {
-                                        const days = Math.floor(remainingTime / 86400);
-                                        const hours = Math.floor((remainingTime % 86400) / 3600);
-                                        const minutes = Math.floor((remainingTime % 3600) / 60);
-                                        const seconds = Math.floor(remainingTime % 60);
-
-                                        return (
-                                            <div className="text-center text-xl font-bold">
-                                            <p>{days}d {hours}h</p>
-                                            <p>{minutes}m {seconds}s</p>
-                                            </div>
-                                        );
-                                        }}
-
-                          </CountdownCircleTimer> */}
+                          <Timer startRegistion={startRegistion} endRegistion={endRegistion}></Timer>              
                         </div>
 
                     </div>
-                   {/* register form section */}
+                    register form section
                    <div className='text-center pr-2 py-5'>
                       <h2 className='text-3xl md:text-4xl  font-bold text-center'>Register for Marathon</h2>
                       <form onSubmit={handleMarathonRegistion} className='text-white'>
