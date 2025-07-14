@@ -19,14 +19,11 @@ const UpdateMarathon = () => {
     useEffect(()=>{
         axiosInstance.get(`/board/mymarathon/${id}`)
         .then((res)=>{
-            console.log(res)
             aetSingleData(res?.data)
         })
-        .catch(err=>console.log(err))
     },[ id,axiosInstance ])
     
     const {image ,description,  marathon_title ,startRegistion ,endRegistion  ,distence,  location  ,_id , startMarathon} = singleData || {}
-    console.log(_id)
    
 
  
@@ -40,7 +37,6 @@ const UpdateMarathon = () => {
         //update the marathon
         axios.patch(`${import.meta.env.VITE_MARATHON_url}/myMarathonModal/${_id}`, updateMarathonData)
         .then((res)=>{
-            console.log(res?.data)
             if(res?.data?.acknowledged){
                  Swal.fire({
                     position: "top-end",
@@ -51,7 +47,6 @@ const UpdateMarathon = () => {
                     });
             }
         })
-        .catch(err=>console.log(err))
     }
 
     return (

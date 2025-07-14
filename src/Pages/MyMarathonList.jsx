@@ -40,7 +40,6 @@ const MyMarathonList = () => {
                         });
                           const deleteData = maraThonData.filter((marathon)=>marathon?._id !== id)
                             setMaraThonData(deleteData)
-                            console.log(res?.data?.deletedCount)
                      }
                   })
             }
