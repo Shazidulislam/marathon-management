@@ -13,7 +13,7 @@ const MyApplyList = () => {
         const [searchText , setSearchText] = useState("")
        
         const axiosInstance = useAxiousSecure()
-        const {user} = useAuth()
+        const {user } = useAuth()
         useEffect(()=>{
            axiosInstance.get(`/applyedList/${user?.email}`)
            .then((res)=>{
@@ -27,7 +27,7 @@ const MyApplyList = () => {
              const  filtered =  maraThonData?.filter((marathon)=>marathon?.marathon_title?.toLowerCase()?.includes(searchText?.toLocaleLowerCase())  )  
              setFilterData(filtered)
         },[maraThonData , searchText])
-
+   
    const handleDeleteMarathon=(id)=>{
          Swal.fire({
             title: "Are you sure?",
@@ -59,7 +59,7 @@ const MyApplyList = () => {
 
          
   
-
+    // if(!user || loading) return <span>Loading........</span>
 
     return (
         <div className='py-10'>

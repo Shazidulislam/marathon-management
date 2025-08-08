@@ -5,7 +5,7 @@ import MarathonCard from '../Component/MarathonCard';
 
 const Marathon = () => {
     const [maraThonData , setMaraThonData] = useState([]);
-const {user} = useAuth();
+const {user } = useAuth();
 const axiosInstance = useAxiousSecure();
 
     useEffect(()=>{
@@ -16,7 +16,7 @@ const axiosInstance = useAxiousSecure();
     },[axiosInstance , user])
 
     
-
+//    if(!user || loading) return <span>Loading...</span>
     return (
         <div className='bg-gradient-to-tl from-[#827cf4] to-[#fff] min-h-screen py-10'>
             <h2 className='text-3xl md:text-5xl  font-bold text-indigo-900 text-center'>Your Added Marathon</h2>

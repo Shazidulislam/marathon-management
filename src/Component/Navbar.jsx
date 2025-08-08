@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const Navbar = () => {
     
-    const {user , signOutUser} = use(AuthContexts)
+    const {user , signOutUser } = use(AuthContexts)
     const navigate = useNavigate()
     const handleSignOut =()=>{
         signOutUser()
@@ -16,6 +16,8 @@ const Navbar = () => {
           navigate("/signin")
         })
     }
+
+    // if( loading) return <span>Loading....</span>
 
     const links = <div className=' md:flex justify-center items-center gap-2'>
         <li>

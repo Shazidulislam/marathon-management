@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 const MyMarathonList = () => {
     const [maraThonData , setMaraThonData] = useState(null)
     const axiosInstance = useAxiousSecure()
-    const {user} = useAuth()
+    const {user } = useAuth()
 
     useEffect(()=>{
         axiosInstance.get(`/marathonData/${user?.email}`)
@@ -50,7 +50,7 @@ const MyMarathonList = () => {
   
     
        
-  
+    // if(!user || loading) return <span>Loading....</span>
     return (
         <div>
             {

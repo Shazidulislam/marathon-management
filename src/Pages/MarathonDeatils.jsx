@@ -10,7 +10,7 @@ const MarathonDeatils = () => {
     const {id} = useParams()
     const [deatilsMarathon , setDeatilsMarathon] = useState(null)
     const axiosInstance = useAxiousSecure();
-    const {user} = useAuth()
+    const {user , loading} = useAuth()
     const [totalRegistion , setTotalRegistion] = useState(1)
     useEffect(()=>{
         axiosInstance.get(`/deatils/${id}`)
@@ -66,7 +66,7 @@ const MarathonDeatils = () => {
     }
 
     
-
+    if(!user || loading) return <span>Loading...</span>
 
     return (
         <div className='py-14 px-3 md:px-12 lg:px-16   min-h-svh bg-gradient-to-br from-blue-900 via-purple-500 to-pink-500 '>

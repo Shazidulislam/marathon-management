@@ -9,16 +9,18 @@ const axiosInstance = axios.create({
 })
 
 const useAxiousSecure = () => {
-    const {user , signOutUser} = use(AuthContexts)
-    const  navigate = useNavigate()
+    const {user , signOutUser } = use(AuthContexts)
 
+   
+    const  navigate = useNavigate()
+    
    axiosInstance?.interceptors?.request?.use(config=>{
     if(user?.accessToken){
          config.headers.Authorization = `Bearer ${user?.accessToken}`
     }
     return config
    })
-
+    
     //response
     axiosInstance?.interceptors?.response?.use(response=>{
         return response
@@ -33,7 +35,7 @@ const useAxiousSecure = () => {
         }
         return Promise.reject(error)
     })
-
+    //  if(loading) return <span>Loading....</span>
     return axiosInstance;
 };
 

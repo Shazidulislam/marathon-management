@@ -12,8 +12,8 @@ const AddMarathon = () => {
     const [ endRegistionDate , setEndRegistionDate ] = useState(new Date());
     const [ startMarathon , setStartMarathon ] = useState(new Date());
 
-    const {user} = use(AuthContexts)
-
+    const {user } = use(AuthContexts)
+    
     const handleAddMarathon=(e)=>{
         e.preventDefault()
         const form = e.target;
@@ -43,7 +43,7 @@ const AddMarathon = () => {
         })
 
     }
-
+    // if(!user ||loading) return <span>Loading...</span>
     return (
         <div className = "min-h-screen  py-12 bg-gradient-to-b  md:pl-10 pl-2 from-indigo-50 px-3 md:px-0 mx-auto to-gray-200">
             {/* addmarathon container */}

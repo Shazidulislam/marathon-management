@@ -7,7 +7,7 @@ import AuthContexts from '../Contexts/AuthContexts';
 import { toast } from 'react-toastify';
 
 const Register = () => {
-        const {createUser ,updateUser, setUser ,setError, error, user , auth } = use(AuthContexts)
+        const {createUser ,updateUser, setUser ,setError, error, user , auth  } = use(AuthContexts)
        const navigate = useNavigate()
        const location = useLocation()
 
@@ -83,7 +83,7 @@ const Register = () => {
           setError(errors.message)
       
          })}
-
+    // if(loading) return <span>Loading...</span>
     return (
         <div className='py-10 px-2 md:px-12 lg:px-16 bg-slate-50 color-theme'>
           <div className="w-full max-w-lg p-4 rounded-md shadow sm:p-8 bg-gray-100 mx-auto text-gray-800">

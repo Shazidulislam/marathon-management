@@ -7,7 +7,7 @@ const HomeMarathon = () => {
     const axiosInstance = useAxiousSecure()
 
     useEffect(()=>{
-        axiosInstance.get("/limiteMarathon")
+        axiosInstance?.get("/limiteMarathon")
         .then((res)=>{
             setLimiteMarathon(res.data)
         })

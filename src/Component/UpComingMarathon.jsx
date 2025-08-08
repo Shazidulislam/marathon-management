@@ -6,11 +6,13 @@ const UpComingMarathon = () => {
 const [marathonData , setMarathonData] = useState([]) 
 
     useEffect(()=>{
-        axios(`${import.meta.env.VITE_MARATHON_url}/upComingMarathon`)
-        .then((res)=>{
-            setMarathonData(res.data)
-        })
-    })
+            axios(`${import.meta.env.VITE_MARATHON_url}/upComingMarathon`)
+               .then((res)=>{
+                    setMarathonData(res.data)
+                })
+              
+       
+    },[])
 
     return (
         <div className='py-10  bg-gradient-to-tl from-[#827cf4] to-[#feeaea]   '>
