@@ -1,15 +1,23 @@
 @import "tailwindcss";
 @plugin "daisyui";
-@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
 
-
-.text_rancho {
-  font-family: "Rancho", cursive;
-}
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-.text_Oswald {
-  font-family: "Oswald", sans-serif;
+body {
+  font-family: "Teko", sans-serif;
   font-optical-sizing: auto;
-  font-weight: weight;
   font-style: normal;
+}
+
+body{
+  background-color: #403f3f;
+  color: #ffffff;
+}
+.divide {
+  height: 1px;           /* Thickness */
+  background-color: #fff; /* Color */
+  margin: 1rem 0;         /* Space around */
+  border: none;
+}
+.bg_primary{
+  background-color: #B6F500;
 }

@@ -55,10 +55,10 @@ const goToSlides =(index)=>{
                 slides.map(slide=>
                     <div key={slide.id} 
                     style={{backgroundImage:`url(${slide.bgImage})` }}
-                    className="min-w-full h-[650px] bg-cover bg-center relative flex justify-center items-center text-white px-3"
+                    className="min-w-full h-[650px] bg-cover  bg-center relative flex justify-center items-center text-white px-3"
                     >
 
-                      <div className='relative z-20'>
+                      <div className='relative z-20 opacity-100'>
                         <p className='  text-5xl font-bold mb-4 drop-shadow-lg w-7/12'>{slide.title}</p>
                         <p className='text-lg mb-6'>{slide.description}</p>
                       

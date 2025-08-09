@@ -1,44 +1,52 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router";
 
-const MarathonCard = ({marathon}) => {
+const MarathonCard = ({ marathon }) => {
+  const { image, marathon_title, startRegistion, endRegistion, location, _id } =
+    marathon || {};
 
-    const {image , marathon_title ,startRegistion ,endRegistion  ,  location  ,_id} = marathon || {}
-
-    return (
-    <div className="max-w-xs md:max-w-sm  rounded-md shadow-md bg-base-100 transition-transform duration-300 hover:scale-105  ">
-        <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72  bg-gray-500" />
-        <div className="flex flex-col justify-between py-6 px-3 space-y-8">
-            <div className="space-y-2 flex-1">
-                <h2 className="text-2xl   text-indigo-900 font-bold">{marathon_title}</h2>
-              
-                <p>
-                    <span className='font-bold text-gray-800'>Location : </span>
-                    <span  className = "text-gray-500 font-semibold" >{location}</span>
-                </p>
-               
-                <p>
-                    <span className='font-bold text-gray-800'>Registration : </span>
-                    <span  className = "text-gray-500 font-semibold" >{startRegistion} - {endRegistion}</span>
-                </p>
-            </div>
-            <Link className='flex-1' to={`/deatils/${_id}`}>
-              <button type="button" className="w-full  p-3 font-semibold tracking-wide rounded  bg-violet-600  text-gray-50">See Marathon Deatils</button>
-            </Link>
-        
-        </div>
+  return (
+    <div className="max-w-xs md:max-w-sm  bg-[#000] rounded-md shadow-md    overflow-hidden ">
+      <div className="overflow-hidden">
+        <img
+          src={image}
+          alt="marathon img"
+          className="object-cover transform transition-transform  duration-300 hover:scale-110 object-center w-full rounded-t-md h-48 "
+        />
+      </div>
+      <div className="h-72  shadow-lg overflow-hidden bg-[#403f3f]">
+  <div className="flex flex-col text-white py-6 px-3 space-y-8 h-full">
+    <div className="space-y-2 flex-grow">
+      <h2 className="text-2xl font-bold">{marathon_title}</h2>
+      <p>
+        <span className="font-bold">Location : </span>
+        <span className="font-semibold">{location}</span>
+      </p>
+      <p>
+        <span className="font-bold">Registration : </span>
+        <span className="font-semibold">
+          {startRegistion} - {endRegistion}
+        </span>
+      </p>
     </div>
-    );
+    <div>
+      <Link to={`/deatils/${_id}`}>
+        <button
+          type="button"
+          className="w-full p-3 font-semibold tracking-wide rounded text-[#B6F500]"
+        >
+          See Marathon Details
+        </button>
+      </Link>
+    </div>
+  </div>
+</div>
+
+    </div>
+  );
 };
 
 export default MarathonCard;
-
-
-
-
-
-
-
 
 // // {
 //     "_id": "6870eb2d64a96f2c2b571236",
@@ -54,6 +62,3 @@ export default MarathonCard;
 //     "createdAt": "2025-07-11T10:45:00.870Z",
 //     "totalRegistrationCount": 3
 // }
-
-
-

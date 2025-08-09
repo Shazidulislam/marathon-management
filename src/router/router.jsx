@@ -5,7 +5,7 @@ import Register from "../Pages/Register";
 import Signin from "../Pages/Signin";
 import Marathon from "../Pages/Marathon";
 import PriviteRoute from "../PriviteRoute/PriviteRoute";
-import Dashboard from "../Pages/Dashboard";
+import Dashboard from "../Layout/DashbordLayout/DashBoard";
 import AddMarathon from "../Pages/AddMarathon";
 import MyMarathonList from "../Pages/MyMarathonList";
 import MyApplyList from "../Pages/MyApplyList";
@@ -13,6 +13,7 @@ import MarathonDeatils from "../Pages/MarathonDeatils";
 import Error from "../Pages/Error";
 import UpdateMarathon from "../Contexts/UpdateMarathon";
 import UpdateRegistion from "../Component/UpdateRegistion";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
 
 
@@ -53,7 +54,11 @@ export const router = createBrowserRouter([
         element:<PriviteRoute><Dashboard></Dashboard></PriviteRoute>,
         children:[
             {
-               index:true,
+                path:"/board",
+                element:<PriviteRoute><DashboardHome></DashboardHome></PriviteRoute>
+            },
+            {
+               path:"/board/addmarathon",
                 element:<PriviteRoute><AddMarathon></AddMarathon></PriviteRoute>
             },
             {
