@@ -1,8 +1,8 @@
 import React, {  useEffect, useState } from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import bannerOne from "../assets/marathon-img/banner-1.jpg"
-import bannerTwo from "../assets/marathon-img/banner-2.jpg"
-import bannerThree from "../assets/marathon-img/banner-3.jpg"
+import bannerOne from "../assets/marathon-img/banner1.jpeg"
+import bannerTwo from "../assets/marathon-img/banner-2.jpeg"
+import bannerThree from "../assets/marathon-img/banner-3.jpeg"
 const Banner = () => {
 // const [data , setData ] = useState([]);
 const [currentSlide , setCurrentSlide] = useState(0)

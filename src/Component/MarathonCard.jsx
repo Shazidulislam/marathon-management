@@ -14,34 +14,33 @@ const MarathonCard = ({ marathon }) => {
           className="object-cover transform transition-transform  duration-300 hover:scale-110 object-center w-full rounded-t-md h-48 "
         />
       </div>
-      <div className="h-72  shadow-lg overflow-hidden bg-[#403f3f]">
-  <div className="flex flex-col text-white py-6 px-3 space-y-8 h-full">
-    <div className="space-y-2 flex-grow">
-      <h2 className="text-2xl font-bold">{marathon_title}</h2>
-      <p>
-        <span className="font-bold">Location : </span>
-        <span className="font-semibold">{location}</span>
-      </p>
-      <p>
-        <span className="font-bold">Registration : </span>
-        <span className="font-semibold">
-          {startRegistion} - {endRegistion}
-        </span>
-      </p>
-    </div>
-    <div>
-      <Link to={`/deatils/${_id}`}>
-        <button
-          type="button"
-          className="w-full p-3 font-semibold tracking-wide rounded text-[#B6F500]"
-        >
-          See Marathon Details
-        </button>
-      </Link>
-    </div>
-  </div>
-</div>
-
+      <div className="h-64  shadow-lg overflow-hidden bg-[#403f3f]">
+        <div className="flex flex-col text-white py-4 px-3 space-y-8 h-full">
+          <div className="space-y-2 flex-grow">
+            <h2 className="text-2xl font-bold">{marathon_title}</h2>
+            <p>
+              <span className="font-bold">Location : </span>
+              <span className="font-semibold">{location}</span>
+            </p>
+            <p>
+              <span className="font-bold">Registration : </span>
+              <span className="font-semibold">
+                {startRegistion} - {endRegistion}
+              </span>
+            </p>
+          </div>
+          <div className="flex-1" >
+            <Link to={`/deatils/${_id}`}>
+              <button
+                type="button"
+                className="w-full p-3 font-semibold tracking-wide rounded text-[#B6F500]"
+              >
+                See Marathon Details
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
