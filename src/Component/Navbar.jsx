@@ -45,7 +45,7 @@ const Navbar = () => {
     </div>
   );
   return (
-    <div className="fixed top-0 left-0 w-full z-50">
+    <div className="fixed top-0 left-0 w-full  z-50">
       <div className="py-4 hidden md:flex   bg_primary text-black justify-center items-center">
         {/* site 1  */}
         <div className="flex justify-center items-center">
@@ -69,7 +69,7 @@ const Navbar = () => {
       </div>
       {/* navbar */}
       <div>
-        <div className="flex w-full justify-between items-center   bg-[#403f3f]  py-2 px-2 md:px-6 shadow-sm">
+        <div className="flex w-full justify-between items-center   bg-black/90  py-2 px-2 md:px-6 shadow-sm">
           <div className="flex justify-between items-center">
             <div className="dropdown">
               <div className="flex justify-between ">

@@ -47,7 +47,7 @@ const goToSlides =(index)=>{
 }
 
     return (
-        <div className=' mt-32 relative w-full mx-w-6xl mx-auto overflow-hidden rounded-md'>
+        <div className=' mt-[136px] relative w-full mx-w-6xl mx-auto overflow-hidden rounded-md'>
            <div className='flex transition-transform duration-500 ease-in-out'
         style= {{ transform: `translateX(-${currentSlide * 100}%)` }}
            >

@@ -22,7 +22,7 @@ const axiosInstance = useAxiousSecure();
     
    if(!user || loading) return <span>Loading...</span>
     return (
-        <div className=' mt-32  min-h-screen py-10 ' style={{backgroundImage:`url(${bgOne})`}} >
+        <div className=' mt-[136px]  min-h-screen py-10 ' style={{backgroundImage:`url(${bgOne})`}} >
             <h2 className='text-3xl md:text-5xl  font-bold  text-center'>Your Added Marathon</h2>
             <div className='px-6 md:px-12  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pt-20'>
                 {

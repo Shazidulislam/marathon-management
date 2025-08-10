@@ -5,6 +5,7 @@ import useAuth from '../useAuth/useauth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Timer from '../Contexts/Timer';
+import bgback from "../assets/marathon-img/bg-black-2.jpeg"
 
 const MarathonDeatils = () => {
     const {id} = useParams()
@@ -69,11 +70,11 @@ const MarathonDeatils = () => {
     if(!user || loading) return <span>Loading...</span>
 
     return (
-        <div className='py-14 px-3 md:px-12 lg:px-16   min-h-svh  '>
+        <div className='py-14 px-3 md:px-12 lg:px-16   min-h-svh mt-[136px] ' style={{backgroundImage:`url(${bgback})`}}>
            
-            <div className=' gap-4  max-w-sm transition-transform duration-300 hover:scale-105  md:max-w-full  border-2 border-[#ffffff90]  shadow-white shadow-2xs rounded-2xl bg-[#ffffff20] text-white'>
+            <div className=' gap-4  max-w-sm transition-transform duration-300   md:max-w-full  border-2 border-[#ffffff90]  shadow-white shadow-2xs rounded-2xl  text-white overflow-hidden'>
                 <figure>
-                    <img className='h-[400px] md:h-[600px] w-full object-cover shadow-2xl   rounded-t-2xl' src={image} alt="" />
+                    <img className='h-[400px] md:h-[600px] w-full object-cover shadow-2xl  transition-transform duration-300 overflow-hidden hover:scale-105 rounded-t-2xl' src={image} alt="" />
                 </figure>
                 <div className='p-3 space-y-4 md:px-12 mx-auto'>
                     <h2 className='text-3xl md:text-4xl lg:text-5xl  font-bold text-center'>{marathon_title}</h2>
@@ -150,7 +151,7 @@ const MarathonDeatils = () => {
                         </fieldset>
                          <button disabled={!isOpen} type='submit' onClick={()=>{
                             if(!isOpen)return
-                         }} className={` px-6 py-3 bg-gradient-to-bl  from-blue-500 via-purple-500 to-pink-500 text-white rounded font-medium ${isOpen ?"" :"btn-disabled cursor-not-allowed opacity-50"} `}>Submit Registion</button>
+                         }} className={`cursor-pointer px-6 py-3 bg-black/40 text-white rounded font-medium ${isOpen ?"" :"btn-disabled cursor-not-allowed opacity-50"} `}>Submit Registion</button>
                       </form>
 
                       

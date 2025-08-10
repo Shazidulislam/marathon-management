@@ -7,7 +7,7 @@ const MarathonCard = ({ marathon , loading }) => {
     marathon || {};
    if(loading) return <CardSkeleton></CardSkeleton>
   return (
-    <div className="max-w-xs md:max-w-sm  bg-black/20 rounded-md shadow-md    overflow-hidden ">
+    <div className="max-w-xs md:max-w-sm  bg-black/50 rounded-md shadow-md    overflow-hidden ">
       <div className="overflow-hidden">
         <img
           src={image}

@@ -59,7 +59,7 @@ const UpdateMarathon = () => {
   };
 
   return (
-    <div className="px-2 md:px-12 py-10">
+    <div className="px-2 md:px-12 py-10 " >
       <form onSubmit={handleUpdateMarathon}>
         <h2 className="text-3xl text-center pt-10 font-bold ">
           Update Marathon
