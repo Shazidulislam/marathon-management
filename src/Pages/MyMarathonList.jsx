@@ -5,6 +5,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import UpdateMarathon from '../Contexts/UpdateMarathon';
 import { Link } from 'react-router';
+import DataNotfound from '../Component/DataNotfound/DataNotfound';
 
 const MyMarathonList = () => {
     const [maraThonData , setMaraThonData] = useState(null)
@@ -52,22 +53,20 @@ const MyMarathonList = () => {
        
     // if(!user || loading) return <span>Loading....</span>
     return (
-        <div>
+        <div className='min-h-screen' >
             {
                 maraThonData?.length == 0 ? <>
-                        <div className='px-4 py-10 max-w-xl bg-indigo-100 mx-auto rounded  border-2 border-indigo-900'>
-                            <h2 className='text-2xl font-medium  text-center not-only: md:text-3xl text-indigo-900'>No marathons found. Please add a new one to get started!</h2>
-                        </div>
+                        <DataNotfound></DataNotfound>
                 </> :
              <>
-                <h2 className='text-3xl md:text-4xl font-bold text-indigo-900 text-center pt-6'>My Marathon Journey</h2>
+                <h2 className='text-3xl md:text-4xl font-bold text-center pt-6'>My Marathon Journey</h2>
                 <div>
-                        <div className="container p-2 py-10 mx-auto sm:p-4 dark:text-gray-800">
+                        <div className="container p-2 py-10 mx-auto sm:p-4 ">
                             <div className="overflow-x-auto">
-                                <table className="w-full p-6 text-xs text-left whitespace-nowrap">
+                                <table className="w-full p-6 text-xs text-left whitespace-nowrap ">
                                 
                                     <thead>
-                                        <tr className=" bg-gray-300">
+                                        <tr className=" ">
                                             <th className="p-3">Title</th>
                                             <th className="p-3">Location</th>
                                             <th className="p-3">Registion </th>
@@ -81,7 +80,7 @@ const MyMarathonList = () => {
                                     {
                                     maraThonData?.map((marathon)=>  
 
-                                    <tbody key={marathon._id} className="border-b  bg-gray-50 dark:border-gray-300">
+                                    <tbody key={marathon._id} className="border-b   dark:border-gray-300">
                                         <tr>
                                             <td className="px-3  font-medium dark:text-gray-600">{marathon?.marathon_title}</td>
                                             <td className="px-3 py-2">

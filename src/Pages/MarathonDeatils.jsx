@@ -69,7 +69,7 @@ const MarathonDeatils = () => {
     if(!user || loading) return <span>Loading...</span>
 
     return (
-        <div className='py-14 px-3 md:px-12 lg:px-16   min-h-svh bg-gradient-to-br from-blue-900 via-purple-500 to-pink-500 '>
+        <div className='py-14 px-3 md:px-12 lg:px-16   min-h-svh  '>
            
             <div className=' gap-4  max-w-sm transition-transform duration-300 hover:scale-105  md:max-w-full  border-2 border-[#ffffff90]  shadow-white shadow-2xs rounded-2xl bg-[#ffffff20] text-white'>
                 <figure>

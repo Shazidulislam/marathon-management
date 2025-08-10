@@ -14,6 +14,7 @@ import Error from "../Pages/Error";
 import UpdateMarathon from "../Contexts/UpdateMarathon";
 import UpdateRegistion from "../Component/UpdateRegistion";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import Profile from "../Pages/Profilr/Profile";
 
 
 
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
             {
                 path:"/board/myapplylist/:id",
                 element:<PriviteRoute><UpdateRegistion></UpdateRegistion></PriviteRoute>     
+            },
+            {
+                path:"/board/myprofile",
+                element:<PriviteRoute><Profile></Profile></PriviteRoute>
             }
         ]
     },

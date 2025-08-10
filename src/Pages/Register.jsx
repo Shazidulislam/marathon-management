@@ -85,7 +85,7 @@ const Register = () => {
          })}
     // if(loading) return <span>Loading...</span>
     return (
-        <div className='py-10 px-2 md:px-12 lg:px-16 bg-slate-50 color-theme'>
+        <div className='py-10 pt-40 px-2 md:px-12 lg:px-16 bg-slate-50 color-theme'>
           <div className="w-full max-w-lg p-4 rounded-md shadow sm:p-8 bg-gray-100 mx-auto text-gray-800">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Register  your account</h2>
                 <p className="text-sm text-center font-medium text-gray-600">Allready have account?

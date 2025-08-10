@@ -7,12 +7,12 @@ const Dashboard = () => {
         <div>
         
             <main>
-                <div className='grid grid-cols-12  bg-[#333446] text-white '>
-                    <div className=' col-span-12  md:col-span-2 text-sm py-8  bg-[#333446] font-medium  shadow-xl'>
+                <div className='grid grid-cols-13   gap-5 '>
+                    <div className=' col-span-13 md:col-span-3 text-sm py-8   font-medium  shadow-xl'>
                         <Sidebar></Sidebar>
                     </div>
                     
-                    <div className= '  col-span-12 md:col-span-10'>
+                    <div className= '  col-span-13 md:col-span-10'>
                         <Outlet></Outlet>
                     </div>
                 </div>
