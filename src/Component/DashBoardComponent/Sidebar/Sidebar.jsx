@@ -29,7 +29,7 @@ const Sidebar = () => {
 
  
     <>
-      <div className=" bg-black/40 text-white flex justify-between md:hidden">
+      <div className="  text-white flex justify-between md:hidden">
         <div>
           <div className="block cursor-pointer px-4 py-1 font-bold">
             <Link to="/">
