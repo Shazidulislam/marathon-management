@@ -7,7 +7,7 @@ const MarathonCard = ({ marathon , loading }) => {
     marathon || {};
    if(loading) return <CardSkeleton></CardSkeleton>
   return (
-    <div className="max-w-xs md:max-w-sm  bg-[#000] rounded-md shadow-md    overflow-hidden ">
+    <div className="max-w-xs md:max-w-sm  bg-black/20 rounded-md shadow-md    overflow-hidden ">
       <div className="overflow-hidden">
         <img
           src={image}
@@ -15,7 +15,7 @@ const MarathonCard = ({ marathon , loading }) => {
           className="object-cover transform transition-transform  duration-300 hover:scale-110 object-center w-full rounded-t-md h-48 "
         />
       </div>
-      <div className="h-64  shadow-lg overflow-hidden bg-[#403f3f]">
+      <div className="h-64  shadow-lg overflow-hidden ">
         <div className="flex flex-col text-white py-4 px-3 space-y-8 h-full">
           <div className="space-y-2 flex-grow">
             <h2 className="text-2xl font-bold">{marathon_title}</h2>
