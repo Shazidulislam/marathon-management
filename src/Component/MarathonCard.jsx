@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router";
+import CardSkeleton from "./Skeleton/CardSkeleton";
 
-const MarathonCard = ({ marathon }) => {
+const MarathonCard = ({ marathon , loading }) => {
   const { image, marathon_title, startRegistion, endRegistion, location, _id } =
     marathon || {};
-
+   if(loading) return <CardSkeleton></CardSkeleton>
   return (
     <div className="max-w-xs md:max-w-sm  bg-[#000] rounded-md shadow-md    overflow-hidden ">
       <div className="overflow-hidden">
@@ -33,7 +34,7 @@ const MarathonCard = ({ marathon }) => {
             <Link to={`/deatils/${_id}`}>
               <button
                 type="button"
-                className="w-full p-3 font-semibold tracking-wide rounded text-[#B6F500]"
+                className="w-full p-3 cursor-pointer font-semibold tracking-wide rounded text-[#B6F500]"
               >
                 See Marathon Details
               </button>

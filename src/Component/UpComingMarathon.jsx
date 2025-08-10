@@ -1,30 +1,43 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import UpComingMarathonCard from './UpComingMarathonCard';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import UpComingMarathonCard from "./UpComingMarathonCard";
+import marathonbg from "../assets/marathon-img/upComingMarathon.jpeg";
+import Skeleton from "./Skeleton/CardSkeleton";
 
 const UpComingMarathon = () => {
-const [marathonData , setMarathonData] = useState([]) 
+  const [marathonData, setMarathonData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
-            axios(`${import.meta.env.VITE_MARATHON_url}/upComingMarathon`)
-               .then((res)=>{
-                    setMarathonData(res.data)
-                })
-              
-       
-    },[])
-
-    return (
-        <div className='py-10  bg-gradient-to-tl from-[#827cf4] to-[#feeaea]   '>
-            <h1 className=' text-2xl md:text-4xl lg:text-5xl pb-5 font-bold text-center text-indigo-900'>Upcoming Marathons</h1>
-           <div className='px-4 md:px-12 mx-auto pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            {
-                marathonData?.map((marathon)=><UpComingMarathonCard key={marathon._id} marathon={marathon} ></UpComingMarathonCard>)
-            }
-            
-           </div>
-        </div>
+  useEffect(() => {
+    axios(`${import.meta.env.VITE_MARATHON_url}/upComingMarathon`).then(
+      (res) => {
+        setMarathonData(res.data);
+        if (res?.data) {
+          setLoading(false);
+        }
+      }
     );
+  }, []);
+
+  return (
+    <div className="py-10   " style={{ backgroundImage: `url(${marathonbg})` }}>
+      <div className="flex flex-col justify-center text-[#403f3f] items-center">
+        <p className="text-xl font-semibold">Events</p>
+        <h1 className=" text-2xl md:text-4xl lg:text-5xl pb-5 font-bold  ">
+          Upcoming Marathons
+        </h1>
+      </div>
+      <div className="px-4 md:px-12 mx-auto pt-10 space-y-4 w-full">
+        {marathonData?.map((marathon) => (
+          <UpComingMarathonCard
+            key={marathon._id}
+            marathon={marathon}
+            loading={loading}
+          ></UpComingMarathonCard>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default UpComingMarathon;

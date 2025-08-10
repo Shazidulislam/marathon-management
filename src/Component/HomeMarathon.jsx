@@ -4,7 +4,6 @@ import MarathonCard from "./MarathonCard";
 import DataNotfound from "./DataNotfound/DataNotfound";
 import marathonbg from "../assets/marathon-img/bg-3.jpeg";
 import marathonbg2 from "../assets/marathon-img/bg-43.jpeg";
-import Skeleton from "./Skeleton/Skeleton";
 
 const HomeMarathon = () => {
   const [limiteMarathon, setLimiteMarathon] = useState(null);
@@ -19,7 +18,7 @@ const HomeMarathon = () => {
       }
     });
   }, [axiosInstance]);
-  if(loading) return <Skeleton></Skeleton>
+
   return (
     <div
       className="py-10 px-2 md:px-12 bg-cover bg-center "
@@ -50,6 +49,7 @@ const HomeMarathon = () => {
                   <MarathonCard
                     key={marathon._id}
                     marathon={marathon}
+                    loading={loading}
                   ></MarathonCard>
                 ))}
               </div>

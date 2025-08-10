@@ -1,43 +1,66 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router";
+import CardSkeleton from "./Skeleton/CardSkeleton";
+import { toast } from "react-toastify";
 
-const UpComingMarathonCard = ({marathon}) => {
+const UpComingMarathonCard = ({ marathon , loading}) => {
+  const {
+    image,
+    _id,
+    title,
+    startRegistrationDate,
+    endRegistrationDate,
+    marathonStartDate,
+    distance,
+    description,
+    location,
+  } = marathon || {};
+  const handleBtn=()=>{
+    toast.success("The marathon hasn’t started yet. Get ready—it’s coming soon!")
+  }
 
-    const {image , _id, title ,startRegistrationDate ,endRegistrationDate , marathonStartDate , distance ,  description , location  } = marathon || {}
+  if(loading) return <CardSkeleton/>
+  return (
 
-    return (
-    <div className="max-w-xs md:max-w-sm  rounded-md shadow-md bg-base-100   ">
-        <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72  bg-gray-500" />
-        <div className="flex flex-col justify-between py-6 px-3 space-y-8">
-            <div className="space-y-2 flex-1">
-                <h2 className="text-2xl   text-indigo-900 font-bold">{title}</h2>
-                <p className=" text-gray-600 text-sm font-semibold">{description}</p>
-                <p>
-                    <span className='font-bold text-gray-800 '>Date : </span>
-                    <span className = "text-gray-500 font-semibold">{marathonStartDate}</span>
-                </p>
-                <p>
-                    <span className='font-bold text-gray-800'>Location : </span>
-                    <span  className = "text-gray-500 font-semibold" >{location}</span>
-                </p>
-                <p>
-                    <span className='font-bold text-gray-800'>Distance : </span>
-                    <span  className = "text-gray-500 font-semibold" >{distance}</span>
-                </p>
-                <p>
-                    <span className='font-bold text-gray-800'>Registration : </span>
-                    <span  className = "text-gray-500 font-semibold" >{startRegistrationDate} - {endRegistrationDate}</span>
-                </p>
-            </div>
-            {/* <Link className='flex-1' to={`/deatils/${_id}`}> */}
-              <button type="button" className="w-full  p-3 font-semibold tracking-wide rounded  bg-violet-600  text-gray-50">See Marathon Deatils</button>
-            {/* </Link> */}
+      <div className="flex flex-col md:w-10/12 lg:w-full mx-auto lg:flex-row">
+        <figure>
+          <img src={image} className="h-72 w-full lg:w-auto rounded-t-xl lg:rounded-tr-none lg:rounded-l-xl" alt="" />
+        </figure>
+        <div className=" flex-1 lg:w-full flex flex-col bg-cover bg-no-repeat bg-center lg:flex-row justify-between lg:h-72 bg-black/55 pl-4 py-6 lg:rounded-r-xl">
+          <div className="w-full space-y-2">
+            <h2 className="text-2xl  text-lime-400 font-bold">{title}</h2>
+          <p className=" text-sm font-semibold">{description}</p>
+          <p>
+            <span className="font-bold ">Date : </span>
+            <span className=" font-semibold">{marathonStartDate}</span>
+          </p>
+          <p>
+            <span className="font-bold">Location : </span>
+            <span className=" font-semibold">{location}</span>
+          </p>
+          <p>
+            <span className="font-bold">Distance : </span>
+            <span className=" font-semibold">{distance}</span>
+          </p>
+          <p>
+            <span className="font-bold ">Registration : </span>
+            <span className=" font-semibold">
+              {startRegistrationDate} - {endRegistrationDate}
+            </span>
+          </p>
+          </div>
+           <div className="divider divider-horizontal before:bg-lime-400 after:bg-lime-400" ></div>
+        <div className="pr-4 space-y-4 pb-4 lg:pb-0 ">
+           <h2 className="text-xl text-lime-400">Ticket</h2>
+           <p>The upcoming marathon is almost here! Registration opens on {startRegistrationDate} and closes on {endRegistrationDate}. Mark your calendar—the race kicks off on {marathonStartDate}. Don’t miss this epic chance to challenge yourself, meet fellow runners, and make unforgettable memories. Lace up and get ready to crush it!</p>
+           <p ><span className="text-4xl">$30</span> <span>/price</span> </p>
+           <button onClick={()=>{
+            handleBtn()
+           }} className="px-6 py-2 bg-black/45 shadow rounded cursor-pointer justify-end" >Deatils</button>
         </div>
-    </div>
-    );
+        </div>
+      </div>
+  );
 };
 
 export default UpComingMarathonCard;
-
-
-

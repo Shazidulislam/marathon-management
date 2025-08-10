@@ -6,8 +6,8 @@ const ExtrasectionOne = () => {
         <div className='px-2 md:px-10 lg:px-16 py-10 grid gap-6 grid-cols-12'>
             <div className= ' col-span-12 md:col-span-5  space-y-8'>
                 <div>
-                   <p className='font-bold text-[#403f3f]'>Overcome new distances</p>
-                    <h1 className='text-5xl font-bold text-[#403f3f] text_Oswald'>Elevate Your Run, Triumph <span className='text-[#F9A51A]'>Awaits You</span></h1>
+                   <p className='font-bold '>Overcome new distances</p>
+                    <h1 className='text-5xl font-bold  text_Oswald'>Elevate Your Run, Triumph <span className='text-[#F9A51A]'>Awaits You</span></h1>
                 </div>
                 <div>
                     <p className='font-medium w-10/12'>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>

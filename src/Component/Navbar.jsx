@@ -45,7 +45,7 @@ const Navbar = () => {
     </div>
   );
   return (
-    <>
+    <div className="fixed top-0 left-0 w-full z-50">
       <div className="py-4 hidden md:flex   bg_primary text-black justify-center items-center">
         {/* site 1  */}
         <div className="flex justify-center items-center">
@@ -207,7 +207,7 @@ const Navbar = () => {
           {/*  */}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
