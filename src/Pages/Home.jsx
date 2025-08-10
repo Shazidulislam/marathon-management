@@ -5,6 +5,7 @@ import HomeMarathon from '../Component/HomeMarathon';
 import ExtrasectionOne from '../Component/ExtrasectionOne';
 import ExtraSection2 from '../Component/ExtraSection2';
 import TrainerSection from '../Component/TrainerSection/TrainerSection';
+import FeturedSection from '../Component/FeterudSection/FeturedSection';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
                 <Banner></Banner>
             </section>
             <main>
+                <FeturedSection></FeturedSection>
                 <HomeMarathon></HomeMarathon>
                {/* upcomingmarathon section  */}
                <UpComingMarathon></UpComingMarathon>

@@ -2,12 +2,12 @@ import React from 'react';
 import metaimg from "../../assets/marathon-img/winner1.jpeg"
 import mancrossing from "../../assets/marathon-img/Man crossing finish line at 2024 Steamboat….jpeg"
 import mancrosing2 from "../../assets/marathon-img/mancrossing2.jpeg"
-
+import bg from "../../assets/marathon-img/bg-43.jpeg"
 const TrainerSection = () => {
     return (
-        <div className='p-4 bg-white text-black'> 
+        <div className='p-4 bg-white text-black' style={{backgroundImage:`url(${bg})`}} > 
            <div className='flex flex-col justify-center items-center'>
-             <p className='text-xl '>Team</p>
+             <p className='text-xl '>Our Success</p>
             <h3 className='text-3xl font-semibold'>Latest Blog & Articles</h3>
             <div className='border-t-4 rounded my-6 border-lime-400 w-32' ></div>
            </div>
