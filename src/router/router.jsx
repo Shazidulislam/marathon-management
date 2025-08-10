@@ -15,6 +15,7 @@ import UpdateMarathon from "../Contexts/UpdateMarathon";
 import UpdateRegistion from "../Component/UpdateRegistion";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import Profile from "../Pages/Profilr/Profile";
+import AllMarathon from "../Pages/AllMarathon";
 
 
 
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
                 path:"/deatils/:id",
                 element:<PriviteRoute><MarathonDeatils></MarathonDeatils></PriviteRoute>
             },
+            {
+                path:"/all-marathon",
+                element:<PriviteRoute><AllMarathon></AllMarathon></PriviteRoute>
+            }
            
         ]
     },

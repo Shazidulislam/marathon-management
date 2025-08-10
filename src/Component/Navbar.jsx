@@ -42,6 +42,16 @@ const Navbar = () => {
           Marathons
         </NavLink>
       </li>
+      <li >
+        <NavLink
+          to="/all-marathon"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "underline" : ""
+          }
+        >
+          All Marathon
+        </NavLink>
+      </li>
     </div>
   );
   return (
